@@ -1,165 +1,236 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Konferencja 2026</title>
+    <title>Event Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
     <style>
+        /* --- COLOR PALETTE & VARIABLES --- */
         :root {
-            --primary: #2563eb;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --text: #334155;
+            --main-color: #08205B;
+            --secondary-color: #618FD8;
+            --accent-color: #E64D4D;
+            --accent-hover: #FF8C8C;
+            --bg-color: #D0E4FF;
+            --text-color: #08205B; /* Using main color for text for high contrast */
+            --white: #ffffff;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        /* --- GLOBAL STYLES --- */
+        html {
+            scroll-behavior: smooth; /* Soft jumps to sections */
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif; /* Normal text font */
             line-height: 1.6;
-            color: var(--text);
-            scroll-behavior: smooth;
-            background: var(--light);
         }
 
-        /* Menu górne */
+        h1, h2, h3, h4 {
+            font-family: 'Andale Mono', monospace; /* Title font */
+            color: var(--main-color);
+        }
+
+        section {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* --- NAVIGATION MENU --- */
         nav {
-            position: sticky;
+            position: fixed;
             top: 0;
-            background: white;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            background-color: var(--main-color);
+            padding: 15px 0;
+            text-align: center;
             z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .logo {
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: var(--primary);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li a {
+        nav a {
+            color: var(--white);
             text-decoration: none;
-            color: var(--dark);
-            margin-left: 20px;
-            font-weight: 500;
-            font-size: 0.9rem;
+            font-family: 'Andale Mono', monospace;
+            margin: 0 15px;
+            font-size: 16px;
             transition: color 0.3s;
         }
 
-        nav ul li a:hover {
-            color: var(--primary);
+        nav a:hover {
+            color: var(--accent-hover);
         }
 
-        /* Sekcje */
-        section {
-            padding: 80px 10%;
-            min-height: 400px;
-        }
-
-        h2 {
-            margin-bottom: 2rem;
-            color: var(--dark);
-            border-left: 5px solid var(--primary);
-            padding-left: 15px;
-        }
-
-        /* Goście */
-        .guests-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .guest-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        /* --- BANNER --- */
+        .banner {
+            margin-top: 50px; /* offset for fixed menu */
+            position: relative;
             text-align: center;
+            background-color: var(--secondary-color);
+        }
+        
+        .banner img.bg-banner {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
         }
 
-        .guest-card img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: #ddd;
-            margin-bottom: 1rem;
+        .banner img.logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 250px;
+            background: rgba(255,255,255,0.8); /* Optional: helps logo pop */
+            padding: 20px;
+            border-radius: 10px;
         }
 
-        /* Przyciski */
+        /* --- BUTTONS --- */
         .btn {
             display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--white);
             padding: 12px 24px;
-            background: var(--primary);
-            color: white;
             text-decoration: none;
+            font-weight: 600;
             border-radius: 5px;
-            margin: 10px 5px;
-            transition: opacity 0.3s;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
         }
 
         .btn:hover {
-            opacity: 0.9;
+            background-color: var(--accent-hover);
+            color: var(--main-color);
         }
 
-        .btn-alt {
-            background: var(--dark);
+        /* --- SECTIONS LAYOUTS --- */
+        
+        /* About Us */
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        .about-text {
+            flex: 1;
+        }
+        .about-image {
+            flex: 1;
+            text-align: right;
+        }
+        .about-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        /* Guests */
+        .guests-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            text-align: center;
+        }
+        .guest-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            flex: 1;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .guest-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 4px solid var(--secondary-color);
+        }
+
+        /* Program */
+        .program-images {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        .program-images img {
+            max-width: 48%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .program-buttons {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
 
         /* Call for Abstracts */
-        .cfa-box {
-            background: var(--dark);
-            color: white;
-            padding: 3rem;
-            border-radius: 15px;
+        .cfa-section {
+            text-align: center;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 60px 20px;
+            border-radius: 8px;
+            margin: 40px auto;
+        }
+        .cfa-section h2 {
+            color: var(--white);
+        }
+
+        /* Contact */
+        .contact-section {
             text-align: center;
         }
 
-        /* Sponsorzy */
-        .sponsors-grid {
+        /* Sponsors */
+        .sponsors-container {
             display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 50px;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 3rem;
-            filter: grayscale(100%);
-            opacity: 0.7;
+        }
+        .sponsor {
+            text-align: center;
+        }
+        .sponsor img {
+            max-width: 150px;
+            max-height: 100px;
+            margin-bottom: 10px;
+        }
+        .sponsor p {
+            font-family: 'Andale Mono', monospace;
+            font-size: 14px;
+            margin: 0;
+            color: var(--main-color);
         }
 
-        .sponsor-logo {
-            width: 150px;
-            height: 80px;
-            background: #e2e8f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        /* RWD */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            nav {
+            .about-container, .guests-grid, .program-images {
                 flex-direction: column;
             }
-            nav ul {
-                margin-top: 10px;
-                flex-wrap: wrap;
-                justify-content: center;
+            .about-image {
+                text-align: center;
             }
-            nav ul li {
-                margin: 5px;
+            .program-images img {
+                max-width: 100%;
+            }
+            nav a {
+                display: inline-block;
+                margin: 5px 10px;
             }
         }
     </style>
@@ -167,86 +238,103 @@
 <body>
 
     <nav>
-        <div class="logo">KONFERENCJA 2026</div>
-        <ul>
-            <li><a href="#about">O nas</a></li>
-            <li><a href="#guests">Goście</a></li>
-            <li><a href="#program">Program</a></li>
-            <li><a href="#cfa">CFA</a></li>
-            <li><a href="#contact">Kontakt</a></li>
-            <li><a href="#sponsors">Sponsorzy</a></li>
-        </ul>
+        <a href="#about">About Us</a>
+        <a href="#guests">Guests</a>
+        <a href="#program">Program</a>
+        <a href="#abstracts">Call for Abstracts</a>
+        <a href="#contact">Contact</a>
+        <a href="#sponsors">Sponsors</a>
     </nav>
 
+    <div class="banner">
+        <img src="banner.jpg" alt="Event Banner" class="bg-banner">
+        <img src="logo.png" alt="Event Logo" class="logo">
+    </div>
+
     <section id="about">
-        <h2>O konferencji</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <h2>About Us</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <p>Welcome to our event! Here is where you can write a few paragraphs about what the conference or meeting is about. We are thrilled to bring together experts, enthusiasts, and innovators.</p>
+                <p>Join us for insightful discussions, networking opportunities, and a chance to expand your horizons.</p>
+            </div>
+            <div class="about-image">
+                <img src="about-photo.jpg" alt="About our event">
+            </div>
+        </div>
     </section>
 
-    <section id="guests" style="background: #f1f5f9;">
-        <h2>Nasi Goście</h2>
+    <hr style="border: 0; height: 1px; background: var(--secondary-color); max-width: 800px; opacity: 0.3;">
+
+    <section id="guests">
+        <h2>Special Guests</h2>
         <div class="guests-grid">
             <div class="guest-card">
-                <img src="https://via.placeholder.com/100" alt="Guest 1">
-                <h3>dr Jan Kowalski</h3>
-                <p><i>"O przyszłości AI w nauce"</i></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Poznaj historię eksperta.</p>
+                <img src="guest1.jpg" alt="Guest 1">
+                <h3>Jane Doe</h3>
+                <p>Dr. Doe is a leading expert in her field with over 20 years of research and keynote experience.</p>
             </div>
             <div class="guest-card">
-                <img src="https://via.placeholder.com/100" alt="Guest 2">
-                <h3>prof. Anna Nowak</h3>
-                <p><i>"Ekologia a technologia"</i></p>
-                <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim.</p>
+                <img src="guest2.jpg" alt="Guest 2">
+                <h3>John Smith</h3>
+                <p>Innovator and author, John has revolutionized modern workflows and strategies.</p>
             </div>
             <div class="guest-card">
-                <img src="https://via.placeholder.com/100" alt="Guest 3">
-                <h3>mgr inż. Marek Wiśniewski</h3>
-                <p><i>"Zarządzanie projektami 4.0"</i></p>
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.</p>
+                <img src="guest3.jpg" alt="Guest 3">
+                <h3>Alice Lee</h3>
+                <p>Award-winning designer and entrepreneur, Alice brings a creative perspective to our panel.</p>
             </div>
         </div>
     </section>
 
     <section id="program">
-        <h2>Program + Księga abstraktów</h2>
-        <p>Pobierz materiały konferencyjne w formacie PDF:</p>
-        <a href="#" class="btn">Pobierz Program (PDF)</a>
-        <a href="#" class="btn btn-alt">Księga Abstraktów (PDF)</a>
-        <p style="margin-top: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Szczegółowy plan godzinowy pojawi się wkrótce.</p>
+        <h2>Program Schedule</h2>
+        <div class="program-images">
+            <img src="program-page1.png" alt="Program Page 1">
+            <img src="program-page2.png" alt="Program Page 2">
+        </div>
+        <div class="program-buttons">
+            <a href="Event_Program.pdf" download class="btn">Download Program (PDF)</a>
+            <a href="Book_of_Abstracts.pdf" download class="btn">Download Abstracts (PDF)</a>
+        </div>
     </section>
 
-    <section id="cfa">
-        <div class="cfa-box">
+    <section id="abstracts">
+        <div class="cfa-section">
             <h2>Call for Abstracts</h2>
-            <p>Zgłoś swoją pracę i stań się częścią naszej społeczności naukowej. Termin: 30.09.2026.</p>
+            <p>We are currently accepting abstract submissions for our upcoming event. Share your research, projects, and ideas with a global audience. Deadline for submission is coming up soon!</p>
             <br>
-            <a href="TU_WSTAW_LINK_DO_GOOGLE_FORMS" class="btn" style="background: #fff; color: var(--dark);">Wypełnij formularz zgłoszeniowy</a>
+            <a href="https://forms.google.com/YOUR_FORM_LINK" target="_blank" class="btn">Submit via Google Forms</a>
         </div>
     </section>
 
-    <section id="contact">
-        <h2>Kontakt</h2>
-        <p>Masz pytania? Napisz do nas!</p>
-        <div style="margin-top: 20px;">
-            <p><strong>Email:</strong> kontakt@konferencja2026.pl</p>
-            <p><strong>Miejsce:</strong> Centrum Konferencyjne, ul. Naukowa 15, Warszawa</p>
-            <p><strong>Tel:</strong> +48 123 456 789</p>
-        </div>
+    <section id="contact" class="contact-section">
+        <h2>Contact Us</h2>
+        <p>If you have any questions, feel free to reach out to our organizing committee.</p>
+        <p><strong>Email:</strong> info@yourevent.com<br>
+           <strong>Phone:</strong> +1 (555) 123-4567<br>
+           <strong>Location:</strong> Main University Campus, Building B</p>
     </section>
 
-    <section id="sponsors" style="background: #f1f5f9; text-align: center;">
-        <h2>Sponsorzy i Partnerzy</h2>
-        <div class="sponsors-grid">
-            <div class="sponsor-logo">LOGO 1</div>
-            <div class="sponsor-logo">LOGO 2</div>
-            <div class="sponsor-logo">LOGO 3</div>
-            <div class="sponsor-logo">LOGO 4</div>
+    <hr style="border: 0; height: 1px; background: var(--secondary-color); max-width: 800px; opacity: 0.3;">
+
+    <section id="sponsors">
+        <h2 style="text-align: center;">Our Sponsors</h2>
+        <div class="sponsors-container">
+            <div class="sponsor">
+                <img src="sponsor1-logo.png" alt="Sponsor 1">
+                <p>TechCorp</p>
+            </div>
+            <div class="sponsor">
+                <img src="sponsor2-logo.png" alt="Sponsor 2">
+                <p>InnoSolutions</p>
+            </div>
+            <div class="sponsor">
+                <img src="sponsor3-logo.png" alt="Sponsor 3">
+                <p>Global Enterprises</p>
+            </div>
         </div>
     </section>
-
-    <footer style="text-align: center; padding: 2rem; background: var(--dark); color: white; font-size: 0.8rem;">
-        &copy; 2026 Konferencja Naukowa. Wszelkie prawa zastrzeżone.
-    </footer>
 
 </body>
 </html>
