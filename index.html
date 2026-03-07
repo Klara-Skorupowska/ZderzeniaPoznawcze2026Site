@@ -83,7 +83,14 @@
             display: block;
         }
 
-        .banner img.logo {
+        /* --- LOGO --- */
+        .logo {
+            position: fixed;
+            text-align: left;
+            background-color: var(--secondary-color);
+        }
+
+        .logo img.logo {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -224,9 +231,12 @@
         <a href="#sponsors">Sponsors</a>
     </nav>
 
+    <div class="logo">
+        <img src="Logo2026_White.png" alt="Event Logo" class="logo">
+    </div>
+    
     <div class="banner">
         <img src="banner.jpg" alt="Event Banner" class="bg-banner">
-        <img src="logo.png" alt="Event Logo" class="logo">
     </div>
 
     <section id="about">
