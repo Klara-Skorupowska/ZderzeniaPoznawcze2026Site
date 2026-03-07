@@ -60,11 +60,19 @@
             padding: 10px 40px; 
             box-sizing: border-box;
         }
+        .nav-logo img {
+            height: 40px;      /* Ustaw taką wysokość, jaką ma Twój pasek menu */
+            width: auto;       /* Zachowuje oryginalne proporcje logo */
+            display: block;    /* Usuwa zbędne marginesy pod obrazkiem */
+            flex-shrink: 0;    /* Bardzo ważne: zapobiega "zgniataniu" logo przez tekst */
+        }
+        
+        /* Dodatkowa poprawka dla kontenera, żeby tekst nie uciekał w górę */
         .nav-logo {
             display: flex;
-            align-items: center; /* Wyrównuje logo i tekst w pionie */
-            text-decoration: none; /* Usuwa podkreślenie z nazwy (jeśli jest linkiem) */
-            gap: 15px; /* Odstęp między obrazkiem a tekstem */
+            align-items: center;
+            height: 100%;      /* Wypełnia wysokość paska nawigacji */
+            text-decoration: none;
         }
         
         .logo-text {
