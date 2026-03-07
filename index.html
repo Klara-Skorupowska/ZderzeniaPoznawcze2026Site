@@ -207,26 +207,53 @@
             }
         }
 
+        /* --- EN/PL switch --- */
             /* Domyślnie ukrywamy angielski */
-    [lang="en"] {
-        display: none !important;
-    }
-    
-    /* Jeśli body ma klasę 'lang-en', ukryj polski i pokaż angielski */
-    body.lang-en [lang="pl"] {
-        display: none !important;
-    }
-    
-    body.lang-en [lang="en"] {
-        display: block !important;
-    }
-    
-    /* Specjalna poprawka dla elementów, które mają być 'flex' (np. siatka gości) */
-    body.lang-en .guests-grid[lang="en"], 
-    body.lang-en .program-images[lang="en"],
-    body.lang-en .sponsors-container[lang="en"] {
-        display: flex !important;
-    }
+        [lang="en"] {
+            display: none !important;
+        }
+        
+        /* Jeśli body ma klasę 'lang-en', ukryj polski i pokaż angielski */
+        body.lang-en [lang="pl"] {
+            display: none !important;
+        }
+        
+        body.lang-en [lang="en"] {
+            display: block !important;
+        }
+        
+        /* Specjalna poprawka dla elementów, które mają być 'flex' (np. siatka gości) */
+        body.lang-en .guests-grid[lang="en"], 
+        body.lang-en .program-images[lang="en"],
+        body.lang-en .sponsors-container[lang="en"] {
+            display: flex !important;
+        }
+
+        /* --- ukrywanie sekcji --- */
+            /* Styl dla sekcji w budowie */
+        .coming-soon .hide-if-empty {
+            display: none !important;
+        }
+        
+        /* Domyślny komunikat (Polski) */
+        .coming-soon::after {
+            content: "Szczegółowy program konferencji pojawi się wkrótce!";
+            display: block;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.6);
+            border: 2px dashed var(--secondary-color);
+            border-radius: 12px;
+            text-align: center;
+            font-style: italic;
+            color: var(--main-color);
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+        
+        /* Komunikat po przełączeniu na Angielski */
+        body.lang-en .coming-soon::after {
+            content: "Detailed conference program will be available soon!";
+        }
     
     </style>    
 </head>
@@ -256,33 +283,34 @@
     <section id="about">
         <div lang="pl">
             <h2>O nas</h2>
-            <p>Serdecznie zapraszamy na <strong>10. edycję</strong> konferencji „Zderzenia Poznawcze”, organizowanej przez studentów kognitywistyki na Wydziale Filozofii Uniwersytetu Warszawskiego.</p>
+            <p>Chcielibyśmy serdecznie zaprosić Państwa na X edycję konferencji kognitywistycznej “Zderzenia Poznawcze” organizowaną przez studentów kognitywistyki na wydziale Filozofii Uniwersytetu Warszawskiego.</p>
             <h3>Czym są Zderzenia Poznawcze?</h3>
-            <p>„Zderzenia Poznawcze” to coroczne wydarzenie wieńczące miesiące projektów badawczych realizowanych przez studentów kognitywistyki, psychologii i filozofii UW. Konferencja jest okazją do prezentacji badań kognitywistycznych z całej Polski.</p>
-            <p>To jednak znacznie więcej niż akademicka prezentacja – to <strong>żywe laboratorium idei</strong>, gdzie filozofia zderza się z neuronauką, a psychologia spotyka się ze sztuczną inteligencją.</p>
+            <p>„Zderzenia Poznawcze" to coroczne wydarzenie, które wieńczy wielomiesięczne projekty badawcze prowadzone przez studentów kognitywistyki, psychologii, filozofii Uniwersytetu Warszawskiego. Stanowi również okazję do prezentacji wyników badań kognitywistycznych pochodzących z całej Polski. To jednak o wiele więcej niż akademicka prezentacja - to żywe laboratorium idei, gdzie filozofia zderza się z neuronauką, a psychologia ze sztuczną inteligencją.</p>
             <h3>Jaki jest cel?</h3>
-            <p>Celem wydarzenia jest integracja osób związanych z naukami o poznaniu z całej Polski. Warto wziąć w nim udział nie tylko dla wiedzy, ale także dla nawiązania kontaktów, debat i inspiracji do własnych badań.</p>
-            <h3>Jak mogę się pojawić?</h3>
-            <p><strong>Wstęp jest wolny</strong>, a konferencja odbywa się przy <em>Krakowskim Przedmieściu 3</em> – w samym sercu Warszawy. Możesz wpaść na godzinę lub zostać na cały dzień. Ciekawość to jedyne, czego potrzebujesz!</p>
-            <p><strong>Do zobaczenia 16 i 17 maja 2026 r. na Wydziale Filozofii UW!</strong></p>
+            <p>Celem wydarzenia jest integracja osób związanych z kognitywistyką w całej Polsce, warto więc przyjść nie tylko po wiedzę, ale także po kontakty, polemiki i inspiracje do własnych badań.</p>
+            <h3>Jak trafić na konferencję?</h3>
+            <p><strong>Wstęp jest wolny, a konferencja odbywa się na Krakowskim Przedmieściu 3, w samym sercu Warszawy, między kawiarniami a Starym Miastem. Można wpaść na godzinę albo zostać na cały dzień. Można słuchać w skupieniu albo zadawać trudne pytania. Jedyne czego oczekujemy to ciekawość i otwartość na najnowsze, studenckie badania kognitywistyczne.</p>
+            <p><strong>Nie możemy się doczekać naszego spotkania 16-17 maja 2026 na Wydziale Filozofii UW!</strong></p>
+            <p>Chciałbyś wziąć aktywny udział w konferencji? Nabór abstraktów wystąpień i posterów trwa! Przejdź do zakładki: Call for abstracts! </p>
         </div>
 
         <div lang="en">
             <h2>About Us</h2>
-            <p>We would like to invite you to the <strong>10th edition</strong> of the ”Cognitive Collisions” conference, organised by students of Cognitive Science at the Faculty of Philosophy, University of Warsaw.</p>
+            <p>We would like to invite you to the 10th edition of the  ”Cognitive Collisions” conference, organised by students of Cognitive Science at the Faculty of Philosophy, University of Warsaw.</p>
             <h3>What are Cognitive Collisions?</h3>
-            <p>"Cognitive Collisions" is an annual event that crowns months of research projects. It is a <strong>living laboratory of ideas</strong>, where philosophy collides with neuroscience, and psychology meets artificial intelligence.</p>
+            <p>"Cognitive Collisions" is an annual event that crowns months of research projects carried out by students of Cognitive Science, Psychology and Philosophy of the University of Warsaw. The conference is an opportunity to present research about Cognitive Science from all around Poland. It is, however, much more than an academic presentation of completed work - it is a living laboratory of ideas, where philosophy collides with neuroscience, and psychology meets artificial intelligence.</p>
             <h3>What is the goal?</h3>
-            <p>The aim is to bring together people connected to cognitive science from across Poland for knowledge, connections, and inspiration.</p>
-            <h3>Admission</h3>
-            <p><strong>Admission is free</strong>. The conference takes place at <em>Krakowskie Przedmieście 3</em>. Curiosity and open-mindedness are the only things you need.</p>
-            <p><strong>Can’t wait to see you on the 16th and 17th May 2026!</strong></p>
+            <p>The aim of the event is to bring together people connected to cognitive science from across Poland. It is therefore worth attending not only for the knowledge, but also for the connections, debates, and inspiration for your own research.</p>
+            <h3>So how can I get there?</h3>
+            <p>Admission is free, and the conference takes place at Krakowskie Przedmieście 3 - in the very heart of Warsaw, right between cafés and the Old Town. You can drop in for an hour or stay for the whole day. You can listen attentively or ask tough questions. Curiosity and open-mindedness about recent academic cognitive research are the only things you need.</p>
+            <p><strong>Can’t wait to see you on the 16th and 17th May 2026 at the Faculty of Philosophy of the Warsaw University!</strong></p>
+            <p>Want to take part in our conference actively? Go to the “call for abstracts” page!</p>
         </div>
     </section>
 
     <hr style="border: 0; height: 1px; background: var(--secondary-color); max-width: 800px; opacity: 0.3;">
 
-    <section id="guests">
+    <section id="guests" class="coming-soon">
         <h2 lang="pl">Nasi Goście</h2>
         <h2 lang="en">Our Guests</h2>
         <div class="guests-grid">
@@ -307,7 +335,7 @@
         </div>
     </section>
 
-    <section id="program">
+    <section id="program" class="coming-soon">
         <h2 lang="pl">Program Wydarzenia</h2>
         <h2 lang="en">Program Schedule</h2>
         <div class="program-images">
@@ -320,7 +348,7 @@
                 <span lang="en">Download Program (PDF)</span>
             </a>
             <a href="Book_of_Abstracts.pdf" download class="btn">
-                <span lang="pl">Książka Abstraktów (PDF)</span>
+                <span lang="pl">Księga Abstraktów (PDF)</span>
                 <span lang="en">Download Abstracts (PDF)</span>
             </a>
         </div>
@@ -329,14 +357,15 @@
     <section id="abstracts">
         <div lang="pl">
             <h2>Call for Abstracts</h2>
-            <p>Zastanawiasz się, jak zgłosić prezentację lub poster? Właśnie <strong>otworzyliśmy nabór abstraktów!</strong></p>
-            <p>Zgłoszenia przyjmowane są przez poniższy formularz. Oceniamy:</p>
+            <p>Jeśli zastanawialiście się jak zgłosić swoje wystąpienie lub plakat na Zderzenia Poznawcze, spieszymy z pomocą! <strong>Nabór abstraktów jest oficjalnie rozpoczęty!</strong></p>
+            <p>Zgłoszeń można dokonywać poprzez poniższy formularz. Abstrakty zostaną ocenione przez zespół naszych recenzentów.</p>
+            <p>Sprawdzamy:</p>
             <ul>
-                <li>Zgodność z interdyscyplinarnym charakterem konferencji</li>
-                <li>Wartość meryteryczną wystąpienia</li>
-                <li>Zwięzłość i poprawność formatu abstraktu</li>
+                <li>zgodność z interdyscyplinarnym charakterem konferencji</li>
+                <li>merytoryczną treść wystąpienia</li>
+                <li>zwięzłą i wyczerpującą formę abstraktu</li>
             </ul>
-            <p style="font-size: 1.1em; color: var(--accent-color);">Czas ucieka! Termin nadsyłania zgłoszeń to <strong>8 kwietnia!</strong></p>
+            <p style="font-size: 1.1em; color: var(--accent-color);">Czas ucieka! Na zgłoszenia czekamy tylko do <strong>8 kwietnia!</strong></p>
             <div style="text-align: center; margin-top: 20px;">
                 <a href="https://forms.google.com/YOUR_FORM_LINK" target="_blank" class="btn">Formularz zgłoszeniowy</a>
             </div>
@@ -344,13 +373,15 @@
 
         <div lang="en">
             <h2>Call for Abstracts</h2>
-            <p>We have just <strong>opened the call for abstracts!</strong> Submissions can be made via the form below. We evaluate:</p>
+            <p>If you have been wondering how to submit your presentation or poster for our conference, we are here to help! <strong>We have just opened the call for abstracts!</strong></p>
+            <p>Submissions can be made via a form below. The abstracts will be reviewed by our team of reviewers.</p>
+            <p>We evaluate:</p>
             <ul>
-                <li>Interdisciplinary nature of the work</li>
-                <li>Substantive content</li>
-                <li>Abstract format</li>
+                <li>Alignment with the interdisciplinary nature of the conference</li>
+                <li>The substantive content of the presentation</li>
+                <li>A concise and comprehensive abstract format</li>
             </ul>
-            <p style="font-size: 1.1em; color: var(--accent-color);">Deadline for submissions is <strong>April 8!</strong></p>
+            <p style="font-size: 1.1em; color: var(--accent-color);">Time is running out! The submission <strong>deadline is April 8!</strong></p>
             <div style="text-align: center; margin-top: 20px;">
                 <a href="https://forms.google.com/YOUR_FORM_LINK" target="_blank" class="btn">Application Form</a>
             </div>
