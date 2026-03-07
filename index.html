@@ -49,10 +49,21 @@
             top: 0;
             width: 100%;
             background-color: var(--main-color);
-            padding: 15px 15px;
-            text-align: right;
             z-index: 1000;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            padding: 10px 40px; 
+            box-sizing: border-box;
+        }
+        .nav-logo img {
+            height: 40px;
+            display: block;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px; 
         }
 
         nav a {
@@ -81,28 +92,6 @@
             height: 400px;
             object-fit: cover;
             display: block;
-        }
-
-        /* --- LOGO --- */
-        .logo {
-            position: fixed;
-            text-align: left;
-            top: 0;
-            padding: 15px 15px;
-            text-align: right;
-            z-index: 1000;
-            background-color: var(--secondary-color);
-        }
-
-        .logo img.logo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 250px;
-            background: rgba(255,255,255,0.8); 
-            padding: 20px;
-            border-radius: 10px;
         }
 
         /* --- BUTTONS --- */
@@ -227,6 +216,9 @@
 <body>
 
     <nav>
+        <a href="#" class="nav-logo">
+            <img src="Logo2026_White.png" alt="Event Logo">
+        </a>
         <a href="#about">About Us</a>
         <a href="#guests">Guests</a>
         <a href="#program">Program</a>
