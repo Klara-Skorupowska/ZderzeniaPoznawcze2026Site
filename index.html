@@ -206,29 +206,29 @@
                 justify-content: center;
             }
         }
-    </style>
 
-/* Domyślnie ukrywamy angielski */
-[lang="en"] {
-    display: none !important;
-}
-
-/* Jeśli body ma klasę 'lang-en', ukryj polski i pokaż angielski */
-body.lang-en [lang="pl"] {
-    display: none !important;
-}
-
-body.lang-en [lang="en"] {
-    display: block !important;
-}
-
-/* Specjalna poprawka dla elementów, które mają być 'flex' (np. siatka gości) */
-body.lang-en .guests-grid[lang="en"], 
-body.lang-en .program-images[lang="en"],
-body.lang-en .sponsors-container[lang="en"] {
-    display: flex !important;
-}
+            /* Domyślnie ukrywamy angielski */
+    [lang="en"] {
+        display: none !important;
+    }
     
+    /* Jeśli body ma klasę 'lang-en', ukryj polski i pokaż angielski */
+    body.lang-en [lang="pl"] {
+        display: none !important;
+    }
+    
+    body.lang-en [lang="en"] {
+        display: block !important;
+    }
+    
+    /* Specjalna poprawka dla elementów, które mają być 'flex' (np. siatka gości) */
+    body.lang-en .guests-grid[lang="en"], 
+    body.lang-en .program-images[lang="en"],
+    body.lang-en .sponsors-container[lang="en"] {
+        display: flex !important;
+    }
+    
+    </style>    
 </head>
 <body>
 
