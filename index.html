@@ -359,27 +359,22 @@
         </div>
     </section>
 
-    <script>
-        let currentLang = 'pl';
+<script>
+    function switchLang() {
+        
+        const body = document.body;
+        const label = document.getElementById('lang-label');
+        
+        body.classList.toggle('lang-en');
 
-        function switchLang() {
-            const elementsPl = document.querySelectorAll('[lang="pl"]');
-            const elementsEn = document.querySelectorAll('[lang="en"]');
-            const label = document.getElementById('lang-label');
-
-            if (currentLang === 'pl') {
-                elementsPl.forEach(el => el.style.display = 'none');
-                elementsEn.forEach(el => el.style.display = 'block');
-                label.innerText = 'PL';
-                currentLang = 'en';
-            } else {
-                elementsPl.forEach(el => el.style.display = 'block');
-                elementsEn.forEach(el => el.style.display = 'none');
-                label.innerText = 'EN';
-                currentLang = 'pl';
-            }
+        
+        if (body.classList.contains('lang-en')) {
+            label.innerText = 'PL';
+        } else {
+            label.innerText = 'EN';
         }
-    </script>
+    }
+</script>
 
 </body>
 </html>
