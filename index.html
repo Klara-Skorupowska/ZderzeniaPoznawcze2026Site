@@ -207,6 +207,28 @@
             }
         }
     </style>
+
+/* Domyślnie ukrywamy angielski */
+[lang="en"] {
+    display: none !important;
+}
+
+/* Jeśli body ma klasę 'lang-en', ukryj polski i pokaż angielski */
+body.lang-en [lang="pl"] {
+    display: none !important;
+}
+
+body.lang-en [lang="en"] {
+    display: block !important;
+}
+
+/* Specjalna poprawka dla elementów, które mają być 'flex' (np. siatka gości) */
+body.lang-en .guests-grid[lang="en"], 
+body.lang-en .program-images[lang="en"],
+body.lang-en .sponsors-container[lang="en"] {
+    display: flex !important;
+}
+    
 </head>
 <body>
 
@@ -221,7 +243,7 @@
             <a href="#abstracts"><span lang="pl">Call for Abstracts</span><span lang="en">Call for Abstracts</span></a>
             <a href="#contact"><span lang="pl">Kontakt</span><span lang="en">Contact</span></a>
             
-            <a class="lang-switch" onclick="switchLang()">
+            <a class="lang-switch" onclick="switchLang()" style="cursor:pointer;">
                 <span id="lang-label">EN</span>
             </a>
         </div>
