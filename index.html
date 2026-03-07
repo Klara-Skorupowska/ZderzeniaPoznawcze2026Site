@@ -43,9 +43,6 @@
             margin: 0 auto;
         }
 
-        /* --- LANGUAGE SWITCH LOGIC --- */
-        [lang="en"] { display: none; } /* Domyślnie ukrywamy angielski, jeśli polski jest główny */
-
         /* --- NAVIGATION MENU --- */
         nav {
             position: fixed;
@@ -54,7 +51,6 @@
             background-color: var(--main-color);
             z-index: 1000;
             display: flex;
-            /* To rozsunie menu na lewo, a logo na prawo */
             justify-content: space-between; 
             align-items: center;
             padding: 10px 40px;
@@ -64,7 +60,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 5px; /* Odstępy między linkami */
+            gap: 15px; 
         }
         
         .nav-logo {
@@ -72,12 +68,10 @@
             align-items: center;
             gap: 15px;
             text-decoration: none;
-            /* To sprawi, że logo będzie po lewej stronie tekstu wewnątrz swojego kontenera */
-            flex-direction: row; 
         }
         
         .nav-logo img {
-            height: 45px; /* Dopasuj wysokość do paska */
+            height: 50px; 
             width: auto;
         }
         
@@ -92,7 +86,7 @@
             color: var(--white);
             text-decoration: none;
             font-family: 'Andale Mono', monospace;
-            margin: 0 10px;
+            margin: 0;
             font-size: 14px;
             transition: color 0.3s;
             cursor: pointer;
@@ -225,28 +219,6 @@
             }
         }
 
-        /* --- EN/PL switch --- */
-            /* Domyślnie ukrywamy angielski */
-        [lang="en"] {
-            display: none !important;
-        }
-        
-        /* Jeśli body ma klasę 'lang-en', ukryj polski i pokaż angielski */
-        body.lang-en [lang="pl"] {
-            display: none !important;
-        }
-        
-        body.lang-en [lang="en"] {
-            display: block !important;
-        }
-        
-        /* Specjalna poprawka dla elementów, które mają być 'flex' (np. siatka gości) */
-        body.lang-en .guests-grid[lang="en"], 
-        body.lang-en .program-images[lang="en"],
-        body.lang-en .sponsors-container[lang="en"] {
-            display: flex !important;
-        }
-
         /* --- ukrywanie sekcji --- */
             /* Styl dla sekcji w budowie */
         .coming-soon .hide-if-empty {
@@ -272,20 +244,42 @@
         body.lang-en .coming-soon::after {
             content: "Details coming soon!";
         }
+
+                /* --- LANGUAGE SWITCH LOGIC --- */
+        [lang="en"] {
+            display: none !important;
+        }
+        
+        /* Jeśli body ma klasę 'lang-en', ukryj polski i pokaż angielski */
+        body.lang-en [lang="pl"] {
+            display: none !important;
+        }
+        
+        body.lang-en [lang="en"] {
+            display: block !important;
+        }
+        
+        /* Specjalna poprawka dla elementów, które mają być 'flex' (np. siatka gości) */
+        body.lang-en .guests-grid[lang="en"], 
+        body.lang-en .program-images[lang="en"],
+        body.lang-en .sponsors-container[lang="en"] {
+            display: flex !important;
+        }
+
     
     </style>    
 </head>
 <body>
 
     <nav>
+        <a href="#" class="nav-logo">
+            <img src="Logo2026_White.png" alt="Event Logo">
+            <span class="logo-text">
+                <span>Zderzenia Poznawcze 2026</span>
+            </span>
+        </a>
+        
         <div class="nav-links">
-            <a href="#" class="nav-logo">
-                <img src="Logo2026_White.png" alt="Event Logo">
-                <span class="logo-text">
-                    <span>Zderzenia Poznawcze 2026</span>
-                </span>
-            </a>
-            
             <a href="#about"><span lang="pl">O nas</span><span lang="en">About Us</span></a>
             <a href="#guests"><span lang="pl">Goście</span><span lang="en">Guests</span></a>
             <a href="#program"><span lang="pl">Program</span><span lang="en">Program</span></a>
