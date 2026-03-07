@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zderzenia Poznawcze 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- COLOR PALETTE & VARIABLES --- */
+        :root {
+            --main-color: #08205B;
+            --secondary-color: #618FD8;
+            --accent-color: #E64D4D;
+            --accent-hover: #FF8C8C;
+            --bg-color: #D0E4FF;
+            --text-color: #08205B; 
+            --white: #ffffff;
+        }
+
+        /* --- GLOBAL STYLES --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Andale Mono', monospace;
+            color: var(--main-color);
+        }
+
+        section {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* --- LANGUAGE SWITCH LOGIC --- */
+        [lang="en"] { display: none; } /* Domyślnie ukrywamy angielski, jeśli polski jest główny */
+
+        /* --- NAVIGATION MENU --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--main-color);
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            padding: 10px 40px; 
+            box-sizing: border-box;
+        }
+        .nav-logo img {
+            height: 40px;
+            display: block;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 5px; 
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'Andale Mono', monospace;
+            margin: 0 10px;
+            font-size: 14px;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: var(--accent-hover);
+        }
+
+        .lang-switch {
+            border-left: 1px solid var(--secondary-color);
+            padding-left: 15px;
+            margin-left: 10px;
+            font-weight: bold;
+            color: var(--accent-hover);
+        }
+
+        /* --- BANNER --- */
+        .banner {
+            margin-top: 50px; 
+            position: relative;
+            text-align: center;
+            background-color: var(--secondary-color);
+        }
+        
+        .banner img.bg-banner {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            color: var(--main-color);
+        }
+
+        /* --- GUESTS --- */
+        .guests-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            text-align: center;
+        }
+        .guest-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            flex: 1;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .guest-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 4px solid var(--secondary-color);
+        }
+
+        /* --- PROGRAM --- */
+        .program-images {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        .program-images img {
+            max-width: 48%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .program-buttons {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* --- SPONSORS --- */
+        .sponsors-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        .sponsor {
+            text-align: center;
+        }
+        .sponsor img {
+            max-width: 150px;
+            max-height: 100px;
+            margin-bottom: 10px;
+        }
+        .sponsor p {
+            font-family: 'Andale Mono', monospace;
+            font-size: 14px;
+            margin: 0;
+            color: var(--main-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .guests-grid, .program-images, .program-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .program-images img { max-width: 100%; }
+            nav {
+                padding: 10px 15px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="nav-logo">
+            <img src="Logo2026_White.png" alt="Event Logo">
+        </a>
+        <div class="nav-links">
+            <a href="#about"><span lang="pl">O nas</span><span lang="en">About Us</span></a>
+            <a href="#guests"><span lang="pl">Goście</span><span lang="en">Guests</span></a>
+            <a href="#program"><span lang="pl">Program</span><span lang="en">Program</span></a>
+            <a href="#abstracts"><span lang="pl">Call for Abstracts</span><span lang="en">Call for Abstracts</span></a>
+            <a href="#contact"><span lang="pl">Kontakt</span><span lang="en">Contact</span></a>
+            
+            <a class="lang-switch" onclick="switchLang()">
+                <span id="lang-label">EN</span>
+            </a>
+        </div>
+    </nav>
+    
+    <div class="banner">
+        <img src="FB_Banner_Cover.png" alt="Event Banner" class="bg-banner">
+    </div>
+
+    <section id="about">
+        <div lang="pl">
+            <h2>O nas</h2>
+            <p>Serdecznie zapraszamy na <strong>10. edycję</strong> konferencji „Zderzenia Poznawcze”, organizowanej przez studentów kognitywistyki na Wydziale Filozofii Uniwersytetu Warszawskiego.</p>
+            <h3>Czym są Zderzenia Poznawcze?</h3>
+            <p>„Zderzenia Poznawcze” to coroczne wydarzenie wieńczące miesiące projektów badawczych realizowanych przez studentów kognitywistyki, psychologii i filozofii UW. Konferencja jest okazją do prezentacji badań kognitywistycznych z całej Polski.</p>
+            <p>To jednak znacznie więcej niż akademicka prezentacja – to <strong>żywe laboratorium idei</strong>, gdzie filozofia zderza się z neuronauką, a psychologia spotyka się ze sztuczną inteligencją.</p>
+            <h3>Jaki jest cel?</h3>
+            <p>Celem wydarzenia jest integracja osób związanych z naukami o poznaniu z całej Polski. Warto wziąć w nim udział nie tylko dla wiedzy, ale także dla nawiązania kontaktów, debat i inspiracji do własnych badań.</p>
+            <h3>Jak mogę się pojawić?</h3>
+            <p><strong>Wstęp jest wolny</strong>, a konferencja odbywa się przy <em>Krakowskim Przedmieściu 3</em> – w samym sercu Warszawy. Możesz wpaść na godzinę lub zostać na cały dzień. Ciekawość to jedyne, czego potrzebujesz!</p>
+            <p><strong>Do zobaczenia 16 i 17 maja 2026 r. na Wydziale Filozofii UW!</strong></p>
+        </div>
+
+        <div lang="en">
+            <h2>About Us</h2>
+            <p>We would like to invite you to the <strong>10th edition</strong> of the ”Cognitive Collisions” conference, organised by students of Cognitive Science at the Faculty of Philosophy, University of Warsaw.</p>
+            <h3>What are Cognitive Collisions?</h3>
+            <p>"Cognitive Collisions" is an annual event that crowns months of research projects. It is a <strong>living laboratory of ideas</strong>, where philosophy collides with neuroscience, and psychology meets artificial intelligence.</p>
+            <h3>What is the goal?</h3>
+            <p>The aim is to bring together people connected to cognitive science from across Poland for knowledge, connections, and inspiration.</p>
+            <h3>Admission</h3>
+            <p><strong>Admission is free</strong>. The conference takes place at <em>Krakowskie Przedmieście 3</em>. Curiosity and open-mindedness are the only things you need.</p>
+            <p><strong>Can’t wait to see you on the 16th and 17th May 2026!</strong></p>
+        </div>
+    </section>
+
+    <hr style="border: 0; height: 1px; background: var(--secondary-color); max-width: 800px; opacity: 0.3;">
+
+    <section id="guests">
+        <h2 lang="pl">Nasi Goście</h2>
+        <h2 lang="en">Our Guests</h2>
+        <div class="guests-grid">
+            <div class="guest-card">
+                <img src="guest1.jpg" alt="Guest 1">
+                <h3>Jane Doe</h3>
+                <p lang="pl">Dr Doe jest czołową ekspertką w swojej dziedzinie z ponad 20-letnim doświadczeniem badawczym.</p>
+                <p lang="en">Dr. Doe is a leading expert in her field with over 20 years of research and keynote experience.</p>
+            </div>
+            <div class="guest-card">
+                <img src="guest2.jpg" alt="Guest 2">
+                <h3>John Smith</h3>
+                <p lang="pl">Innowator i autor, John zrewolucjonizował nowoczesne strategie pracy.</p>
+                <p lang="en">Innovator and author, John has revolutionized modern workflows and strategies.</p>
+            </div>
+            <div class="guest-card">
+                <img src="guest3.jpg" alt="Guest 3">
+                <h3>Alice Lee</h3>
+                <p lang="pl">Nagradzana projektantka i przedsiębiorczyni, Alice wnosi kreatywną perspektywę do panelu.</p>
+                <p lang="en">Award-winning designer and entrepreneur, Alice brings a creative perspective to our panel.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="program">
+        <h2 lang="pl">Program Wydarzenia</h2>
+        <h2 lang="en">Program Schedule</h2>
+        <div class="program-images">
+            <img src="program-page1.png" alt="Program Page 1">
+            <img src="program-page2.png" alt="Program Page 2">
+        </div>
+        <div class="program-buttons">
+            <a href="Event_Program.pdf" download class="btn">
+                <span lang="pl">Pobierz Program (PDF)</span>
+                <span lang="en">Download Program (PDF)</span>
+            </a>
+            <a href="Book_of_Abstracts.pdf" download class="btn">
+                <span lang="pl">Książka Abstraktów (PDF)</span>
+                <span lang="en">Download Abstracts (PDF)</span>
+            </a>
+        </div>
+    </section>
+
+    <section id="abstracts">
+        <div lang="pl">
+            <h2>Call for Abstracts</h2>
+            <p>Zastanawiasz się, jak zgłosić prezentację lub poster? Właśnie <strong>otworzyliśmy nabór abstraktów!</strong></p>
+            <p>Zgłoszenia przyjmowane są przez poniższy formularz. Oceniamy:</p>
+            <ul>
+                <li>Zgodność z interdyscyplinarnym charakterem konferencji</li>
+                <li>Wartość meryteryczną wystąpienia</li>
+                <li>Zwięzłość i poprawność formatu abstraktu</li>
+            </ul>
+            <p style="font-size: 1.1em; color: var(--accent-color);">Czas ucieka! Termin nadsyłania zgłoszeń to <strong>8 kwietnia!</strong></p>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="https://forms.google.com/YOUR_FORM_LINK" target="_blank" class="btn">Formularz zgłoszeniowy</a>
+            </div>
+        </div>
+
+        <div lang="en">
+            <h2>Call for Abstracts</h2>
+            <p>We have just <strong>opened the call for abstracts!</strong> Submissions can be made via the form below. We evaluate:</p>
+            <ul>
+                <li>Interdisciplinary nature of the work</li>
+                <li>Substantive content</li>
+                <li>Abstract format</li>
+            </ul>
+            <p style="font-size: 1.1em; color: var(--accent-color);">Deadline for submissions is <strong>April 8!</strong></p>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="https://forms.google.com/YOUR_FORM_LINK" target="_blank" class="btn">Application Form</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 lang="pl">Kontakt</h2>
+        <h2 lang="en">Contact Us</h2>
+        <p lang="pl">Masz pytania? Skontaktuj się z komitetem organizacyjnym.</p>
+        <p lang="en">If you have any questions, feel free to reach out to our organizing committee.</p>
+        <p>
+            Email: zderzenia.poznawcze@gmail.com
+            <br>
+            <span lang="pl">Lokalizacja: Wydział Filozofii UW, Krakowskie Przedmieście 3</span>
+            <span lang="en">Location: Faculty of Philosophy UW, Krakowskie Przedmieście 3</span>
+        </p>
+    </section>
+
+    <hr style="border: 0; height: 1px; background: var(--secondary-color); max-width: 800px; opacity: 0.3;">
+
+    <section id="sponsors">
+        <h2 style="text-align: center;"><span lang="pl">Nasi Sponsorzy</span><span lang="en">Our Sponsors</span></h2>
+        <div class="sponsors-container">
+            <div class="sponsor"><img src="sponsor1-logo.png" alt="Sponsor 1"><p>ML in PL</p></div>
+            <div class="sponsor"><img src="sponsor2-logo.png" alt="Sponsor 2"><p>Filozofia UW</p></div>
+            <div class="sponsor"><img src="sponsor3-logo.png" alt="Sponsor 3"><p>Kognitywistyka UW</p></div>
+        </div>
+    </section>
+
+    <script>
+        let currentLang = 'pl';
+
+        function switchLang() {
+            const elementsPl = document.querySelectorAll('[lang="pl"]');
+            const elementsEn = document.querySelectorAll('[lang="en"]');
+            const label = document.getElementById('lang-label');
+
+            if (currentLang === 'pl') {
+                elementsPl.forEach(el => el.style.display = 'none');
+                elementsEn.forEach(el => el.style.display = 'block');
+                label.innerText = 'PL';
+                currentLang = 'en';
+            } else {
+                elementsPl.forEach(el => el.style.display = 'block');
+                elementsEn.forEach(el => el.style.display = 'none');
+                label.innerText = 'EN';
+                currentLang = 'pl';
+            }
+        }
+    </script>
+
+</body>
+</html>
