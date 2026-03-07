@@ -53,39 +53,39 @@
             width: 100%;
             background-color: var(--main-color);
             z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             display: flex;
+            /* To rozsunie menu na lewo, a logo na prawo */
             justify-content: space-between; 
             align-items: center;
-            padding: 10px 40px; 
+            padding: 10px 40px;
             box-sizing: border-box;
         }
-        .nav-logo img {
-            height: 40px;      /* Ustaw taką wysokość, jaką ma Twój pasek menu */
-            width: auto;       /* Zachowuje oryginalne proporcje logo */
-            display: block;    /* Usuwa zbędne marginesy pod obrazkiem */
-            flex-shrink: 0;    /* Bardzo ważne: zapobiega "zgniataniu" logo przez tekst */
-        }
         
-        /* Dodatkowa poprawka dla kontenera, żeby tekst nie uciekał w górę */
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            height: 100%;      /* Wypełnia wysokość paska nawigacji */
-            text-decoration: none;
-        }
-        
-        .logo-text {
-            font-family: 'Andale Mono', monospace; /* Ta sama czcionka co w nagłówkach */
-            color: var(--white);
-            font-size: 18px;
-            font-weight: 600;
-            white-space: nowrap; /* Zapobiega rozbijaniu nazwy na dwie linie na małych ekranach */
-        }
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 5px; 
+            gap: 5px; /* Odstępy między linkami */
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            /* To sprawi, że logo będzie po lewej stronie tekstu wewnątrz swojego kontenera */
+            flex-direction: row; 
+        }
+        
+        .nav-logo img {
+            height: 45px; /* Dopasuj wysokość do paska */
+            width: auto;
+        }
+        
+        .logo-text {
+            font-family: 'Andale Mono', monospace;
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 600;
         }
 
         nav a {
@@ -120,7 +120,7 @@
         
         .banner img.bg-banner {
             width: 100%;
-            height: 400px;
+            height: auto;
             object-fit: cover;
             display: block;
         }
@@ -278,9 +278,6 @@
 <body>
 
     <nav>
-        <a href="#" class="nav-logo">
-            <img src="Logo2026_White.png" alt="Event Logo">
-        </a>
         <div class="nav-links">
             <a href="#about"><span lang="pl">O nas</span><span lang="en">About Us</span></a>
             <a href="#guests"><span lang="pl">Goście</span><span lang="en">Guests</span></a>
@@ -288,11 +285,18 @@
             <a href="#abstracts"><span lang="pl">Call for Abstracts</span><span lang="en">Call for Abstracts</span></a>
             <a href="#contact"><span lang="pl">Kontakt</span><span lang="en">Contact</span></a>
             
-            <a href="#" class="nav-logo">
-                <img src="Logo2026_White.png" alt="Event Logo">
-                <span class="logo-text">Zderzenia Poznawcze 2026</span>
+            <a class="lang-switch" onclick="switchLang()" style="cursor:pointer; margin-left: 10px;">
+                <span id="lang-label">EN</span>
             </a>
         </div>
+    
+        <a href="#" class="nav-logo">
+            <img src="Logo2026_White.png" alt="Event Logo">
+            <span class="logo-text">
+                <span lang="pl">Zderzenia Poznawcze 2026</span>
+                <span lang="en">Cognitive Collisions 2026</span>
+            </span>
+        </a>
     </nav>
     
     <div class="banner">
@@ -429,9 +433,8 @@
     <section id="sponsors">
         <h2 style="text-align: center;"><span lang="pl">Nasi Sponsorzy</span><span lang="en">Our Sponsors</span></h2>
         <div class="sponsors-container">
-            <div class="sponsor"><img src="sponsor1-logo.png" alt="Sponsor 1"><p>ML in PL</p></div>
-            <div class="sponsor"><img src="sponsor2-logo.png" alt="Sponsor 2"><p>Filozofia UW</p></div>
-            <div class="sponsor"><img src="sponsor3-logo.png" alt="Sponsor 3"><p>Kognitywistyka UW</p></div>
+            <div class="sponsor"><img src="mlinpl-logo-white.png" alt="MlinPL"><p>ML in PL</p></div>
+            <div class="sponsor"><img src="filoUW-logo.png" alt="Filozofia UW"><p>Filozofia UW</p></div>
         </div>
     </section>
 
