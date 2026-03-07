@@ -60,9 +60,19 @@
             padding: 10px 40px; 
             box-sizing: border-box;
         }
-        .nav-logo img {
-            height: 40px;
-            display: block;
+        .nav-logo {
+            display: flex;
+            align-items: center; /* Wyrównuje logo i tekst w pionie */
+            text-decoration: none; /* Usuwa podkreślenie z nazwy (jeśli jest linkiem) */
+            gap: 15px; /* Odstęp między obrazkiem a tekstem */
+        }
+        
+        .logo-text {
+            font-family: 'Andale Mono', monospace; /* Ta sama czcionka co w nagłówkach */
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 600;
+            white-space: nowrap; /* Zapobiega rozbijaniu nazwy na dwie linie na małych ekranach */
         }
         .nav-links {
             display: flex;
@@ -237,7 +247,7 @@
         
         /* Domyślny komunikat (Polski) */
         .coming-soon::after {
-            content: "Szczegółowy program konferencji pojawi się wkrótce!";
+            content: "Szczegóły już w krótce!";
             display: block;
             padding: 30px;
             background: rgba(255, 255, 255, 0.6);
@@ -252,7 +262,7 @@
         
         /* Komunikat po przełączeniu na Angielski */
         body.lang-en .coming-soon::after {
-            content: "Detailed conference program will be available soon!";
+            content: "Details coming soon!";
         }
     
     </style>    
@@ -270,8 +280,9 @@
             <a href="#abstracts"><span lang="pl">Call for Abstracts</span><span lang="en">Call for Abstracts</span></a>
             <a href="#contact"><span lang="pl">Kontakt</span><span lang="en">Contact</span></a>
             
-            <a class="lang-switch" onclick="switchLang()" style="cursor:pointer;">
-                <span id="lang-label">EN</span>
+            <a href="#" class="nav-logo">
+                <img src="Logo2026_White.png" alt="Event Logo">
+                <span class="logo-text">Zderzenia Poznawcze 2026</span>
             </a>
         </div>
     </nav>
