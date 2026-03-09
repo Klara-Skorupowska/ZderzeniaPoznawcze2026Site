@@ -182,13 +182,14 @@
 
         /* --- SPONSORS --- */
         #sponsors {
-            background-color: var(--secondary-color); 
-            max-width: 100%;                          
-            padding: 80px 0;                         
+            background-color: var(--secondary-color);
+            max-width: 100% !important;
+            width: 100%;
+            margin: 0;
+            padding: 60px 0;
         }
         
-        /* Kontener wewnętrzny, który trzyma treść w ryzach (1000px) */
-        #sponsors .sponsors-inner {
+        .sponsors-inner {
             max-width: 1000px;
             margin: 0 auto;
             padding: 0 20px;
@@ -210,38 +211,88 @@
         
         .sponsor {
             text-align: center;
+            text-decoration: none;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            display: block;
         }
         
         .sponsor img {
             max-width: 150px;
             max-height: 100px;
             margin-bottom: 10px;
-            filter: brightness(0) invert(1);
         }
         
         .sponsor p {
             font-family: 'Andale Mono', monospace;
             font-size: 14px;
             margin: 0;
-            color: var(--white);                     
+            color: var(--white); 
+            text-decoration: none;
         }
 
-        /* Responsive Design */
+        .sponsor:hover {
+            transform: translateY(-5px); /* Delikatne uniesienie przy najechaniu */
+            opacity: 0.8;
+        }
+
+        /* --- MOBILE MENU STYLES --- */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--white);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        
+        /* Responsywność */
         @media (max-width: 768px) {
-            .guests-grid, .program-images, .program-buttons {
-                flex-direction: column;
-                align-items: center;
+            .menu-toggle {
+                display: flex;
             }
-            .program-images img { max-width: 100%; }
-            nav {
-                padding: 10px 15px;
-            }
+        
             .nav-links {
-                flex-wrap: wrap;
+                position: fixed;
+                top: 0;
+                right: -100%; /* Ukryte poza ekranem */
+                height: 100vh;
+                width: 70%;
+                background-color: var(--main-color);
+                flex-direction: column;
                 justify-content: center;
+                gap: 30px;
+                transition: 0.4s;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+            }
+        
+            .nav-links.active {
+                right: 0; /* Wysunięte */
+            }
+        
+            .lang-switch {
+                border-left: none;
+                border-top: 1px solid var(--secondary-color);
+                padding-top: 15px;
+                padding-left: 0;
+                margin-left: 0;
+            }
+        
+            /* Sponsorzy na mobile */
+            .sponsors-container {
+                gap: 30px;
+            }
+            
+            .sponsor img {
+                max-width: 120px; /* Mniejsze logotypy na telefonie */
             }
         }
-
         /* --- ukrywanie sekcji --- */
             /* Styl dla sekcji w budowie */
         .coming-soon .hide-if-empty {
@@ -297,19 +348,23 @@
     <nav>
         <a href="#" class="nav-logo">
             <img src="Logo2026_White.png" alt="Event Logo">
-            <span class="logo-text">
-                <span>Zderzenia Poznawcze 2026</span>
-            </span>
+            <span class="logo-text">Zderzenia Poznawcze 2026</span>
         </a>
         
-        <div class="nav-links">
-            <a href="#about"><span lang="pl">O nas</span><span lang="en">About Us</span></a>
-            <a href="#guests"><span lang="pl">Goście</span><span lang="en">Guests</span></a>
-            <a href="#program"><span lang="pl">Program</span><span lang="en">Program</span></a>
-            <a href="#abstracts"><span lang="pl">Call for Abstracts</span><span lang="en">Call for Abstracts</span></a>
-            <a href="#contact"><span lang="pl">Kontakt</span><span lang="en">Contact</span></a>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="#about" onclick="toggleMenu()"><span lang="pl">O nas</span><span lang="en">About Us</span></a>
+            <a href="#guests" onclick="toggleMenu()"><span lang="pl">Goście</span><span lang="en">Guests</span></a>
+            <a href="#program" onclick="toggleMenu()"><span lang="pl">Program</span><span lang="en">Program</span></a>
+            <a href="#abstracts" onclick="toggleMenu()"><span lang="pl">Call for Abstracts</span><span lang="en">Call for Abstracts</span></a>
+            <a href="#contact" onclick="toggleMenu()"><span lang="pl">Kontakt</span><span lang="en">Contact</span></a>
             
-            <a class="lang-switch" onclick="switchLang()" style="cursor:pointer; margin-left: 10px;">
+            <a class="lang-switch" onclick="switchLang(); event.stopPropagation();">
                 <span id="lang-label">EN</span>
             </a>
         </div>
@@ -447,23 +502,24 @@
     <hr style="border: 0; height: 1px; background: var(--secondary-color); max-width: 800px; opacity: 0.3;">
 
     <section id="sponsors">
-    <div class="sponsors-inner">
-        <h2>
-            <span lang="pl">Nasi Sponsorzy</span>
-            <span lang="en">Our Sponsors</span>
-        </h2>
-        <div class="sponsors-container">
-            <div class="sponsor">
-                <img src="mlinpl-logo-white.png" alt="MlinPL">
-                <p>ML in PL</p>
-            </div>
-            <div class="sponsor">
-                <img src="filoUW-logo.png" alt="Filozofia UW">
-                <p>Filozofia UW</p>
+        <div class="sponsors-inner">
+            <h2>
+                <span lang="pl">Nasi Sponsorzy</span>
+                <span lang="en">Our Sponsors</span>
+            </h2>
+            <div class="sponsors-container">
+                <a href="https://mlinpl.org" target="_blank" class="sponsor">
+                    <img src="mlinpl-logo-white.png" alt="MlinPL">
+                    <p>ML in PL</p>
+                </a>
+                
+                <a href="https://filozofia.uw.edu.pl" target="_blank" class="sponsor">
+                    <img src="filoUW-logo.png" alt="Filozofia UW">
+                    <p>Filozofia UW</p>
+                </a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 <script>
     function switchLang() {
@@ -480,6 +536,15 @@
             label.innerText = 'EN';
         }
     }
+
+    function toggleMenu() {
+        const navLinks = document.getElementById('navLinks');
+        const toggle = document.querySelector('.menu-toggle');
+        
+        navLinks.classList.toggle('active');
+        toggle.classList.toggle('open');
+    }
+    
 </script>
 
 </body>
