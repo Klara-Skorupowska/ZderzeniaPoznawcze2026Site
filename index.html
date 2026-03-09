@@ -181,6 +181,25 @@
         }
 
         /* --- SPONSORS --- */
+        #sponsors {
+            background-color: var(--secondary-color); 
+            max-width: 100%;                          
+            padding: 80px 0;                         
+        }
+        
+        /* Kontener wewnętrzny, który trzyma treść w ryzach (1000px) */
+        #sponsors .sponsors-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        #sponsors h2 {
+            color: var(--white);                      
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
         .sponsors-container {
             display: flex;
             justify-content: center;
@@ -188,20 +207,23 @@
             gap: 50px;
             flex-wrap: wrap;
         }
+        
         .sponsor {
             text-align: center;
-            background-color: var(--secondary-color);
         }
+        
         .sponsor img {
             max-width: 150px;
             max-height: 100px;
             margin-bottom: 10px;
+            filter: brightness(0) invert(1);
         }
+        
         .sponsor p {
             font-family: 'Andale Mono', monospace;
             font-size: 14px;
             margin: 0;
-            color: var(--white);
+            color: var(--white);                     
         }
 
         /* Responsive Design */
@@ -425,12 +447,23 @@
     <hr style="border: 0; height: 1px; background: var(--secondary-color); max-width: 800px; opacity: 0.3;">
 
     <section id="sponsors">
-        <h2 style="text-align: center;"><span lang="pl">Nasi Sponsorzy</span><span lang="en">Our Sponsors</span></h2>
+    <div class="sponsors-inner">
+        <h2>
+            <span lang="pl">Nasi Sponsorzy</span>
+            <span lang="en">Our Sponsors</span>
+        </h2>
         <div class="sponsors-container">
-            <div class="sponsor"><img src="mlinpl-logo-white.png" alt="MlinPL"><p>ML in PL</p></div>
-            <div class="sponsor"><img src="filoUW-logo.png" alt="Filozofia UW"><p>Filozofia UW</p></div>
+            <div class="sponsor">
+                <img src="mlinpl-logo-white.png" alt="MlinPL">
+                <p>ML in PL</p>
+            </div>
+            <div class="sponsor">
+                <img src="filoUW-logo.png" alt="Filozofia UW">
+                <p>Filozofia UW</p>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
 <script>
     function switchLang() {
