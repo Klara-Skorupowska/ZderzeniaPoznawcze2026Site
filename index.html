@@ -85,7 +85,8 @@
             overflow: hidden;
             text-overflow: ellipsis;
             font-weight: 600;
-            flex: 2;
+            flex: 1;
+            margin: 0 10px;
         }
 
         nav a {
@@ -279,7 +280,19 @@
                 transition: 0.3s;
             }
 
-        /* Responsywność */
+            .menu-toggle.open span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .menu-toggle.open span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.open span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+        /* Responsywność - urządzenia mobilne */
         @media (max-width: 768px) {
             .nav {
                 padding: 10px 20px;
@@ -287,6 +300,9 @@
 
             .menu-toggle {
                 display: flex;
+                flex: 0 0 auto;
+                width: 30px;
+                justify-content: flex-end;
             }
 
             .nav-links {
