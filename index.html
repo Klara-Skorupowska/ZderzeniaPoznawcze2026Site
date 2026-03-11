@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zderzenia Poznawcze 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
     <style>
         /* --- COLOR PALETTE & VARIABLES --- */
         :root {
@@ -14,7 +14,7 @@
             --accent-color: #E64D4D;
             --accent-hover: #FF8C8C;
             --bg-color: #D0E4FF;
-            --text-color: #08205B; 
+            --text-color: #08205B;
             --white: #ffffff;
         }
 
@@ -28,7 +28,7 @@
             padding: 0;
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Open Sans', sans-serif;
             line-height: 1.6;
         }
 
@@ -51,30 +51,30 @@
             background-color: var(--main-color);
             z-index: 1000;
             display: flex;
-            justify-content: space-between; 
+            justify-content: space-between;
             align-items: center;
             padding: 10px 40px;
             box-sizing: border-box;
         }
-        
+
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 15px; 
+            gap: 15px;
         }
-        
+
         .nav-logo {
             display: flex;
             align-items: center;
             gap: 15px;
             text-decoration: none;
         }
-        
-        .nav-logo img {
-            height: 50px; 
-            width: auto;
-        }
-        
+
+            .nav-logo img {
+                height: 50px;
+                width: auto;
+            }
+
         .logo-text {
             font-family: 'Andale Mono', monospace;
             color: var(--white);
@@ -92,9 +92,9 @@
             cursor: pointer;
         }
 
-        nav a:hover {
-            color: var(--accent-hover);
-        }
+            nav a:hover {
+                color: var(--accent-hover);
+            }
 
         .lang-switch {
             border-left: 1px solid var(--secondary-color);
@@ -106,34 +106,39 @@
 
         /* --- BANNER --- */
         .banner {
-            margin-top: 50px; 
+            margin-top: 50px;
             position: relative;
             text-align: center;
             background-color: var(--secondary-color);
-        }
-        
-        .banner img.bg-banner {
+            /* do usunięcia jak będzie dobry obrazek */
+            height: 1068px;
             width: 100%;
-            height: auto;
-            object-fit: cover;
-            display: block;
         }
+
+            .banner img.bg-banner {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                display: block;
+            }
 
         /* --- FOOTNOTE --- */
         .footnote {
-            margin-top: 0px; 
+            margin-top: 0px;
             position: relative;
             text-align: center;
             background-color: var(--secondary-color);
-            height: 400px; /* do usunięcia jak będzie obrazek */
-        }
-        
-        .footnote img.bg-footnote {
+            /* do usunięcia jak będzie dobry obrazek */
+            height: 400px;
             width: 100%;
-            height: auto;
-            object-fit: cover;
-            display: block;
         }
+
+            .footnote img.bg-footnote {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                display: block;
+            }
 
         /* --- BUTTONS --- */
         .btn {
@@ -147,13 +152,13 @@
             transition: background 0.3s;
             border: none;
             cursor: pointer;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Open Sans', sans-serif;
         }
 
-        .btn:hover {
-            background-color: var(--accent-hover);
-            color: var(--main-color);
-        }
+            .btn:hover {
+                background-color: var(--accent-hover);
+                color: var(--main-color);
+            }
 
         /* --- GUESTS --- */
         .guests-grid {
@@ -162,6 +167,7 @@
             gap: 20px;
             text-align: center;
         }
+
         .guest-card {
             background: var(--white);
             padding: 20px;
@@ -169,14 +175,15 @@
             flex: 1;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
-        .guest-card img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 15px;
-            border: 4px solid var(--secondary-color);
-        }
+
+            .guest-card img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-bottom: 15px;
+                border: 4px solid var(--secondary-color);
+            }
 
         /* --- PROGRAM --- */
         .program-images {
@@ -185,10 +192,12 @@
             margin-bottom: 30px;
             justify-content: center;
         }
-        .program-images img {
-            max-width: 48%;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
+
+            .program-images img {
+                max-width: 48%;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+
         .program-buttons {
             text-align: center;
             display: flex;
@@ -204,19 +213,19 @@
             margin: 0;
             padding: 60px 0;
         }
-        
+
         .sponsors-inner {
             max-width: 1000px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         #sponsors h2 {
-            color: var(--white);                      
+            color: var(--white);
             text-align: center;
             margin-bottom: 40px;
         }
-        
+
         .sponsors-container {
             display: flex;
             justify-content: center;
@@ -224,32 +233,32 @@
             gap: 50px;
             flex-wrap: wrap;
         }
-        
+
         .sponsor {
             text-align: center;
             text-decoration: none;
             transition: transform 0.3s ease, opacity 0.3s ease;
             display: block;
         }
-        
-        .sponsor img {
-            max-width: 150px;
-            max-height: 100px;
-            margin-bottom: 10px;
-        }
-        
-        .sponsor p {
-            font-family: 'Andale Mono', monospace;
-            font-size: 14px;
-            margin: 0;
-            color: var(--white); 
-            text-decoration: none;
-        }
 
-        .sponsor:hover {
-            transform: translateY(-5px); /* Delikatne uniesienie przy najechaniu */
-            opacity: 0.8;
-        }
+            .sponsor img {
+                max-width: 150px;
+                max-height: 100px;
+                margin-bottom: 10px;
+            }
+
+            .sponsor p {
+                font-family: 'Andale Mono', monospace;
+                font-size: 14px;
+                margin: 0;
+                color: var(--white);
+                text-decoration: none;
+            }
+
+            .sponsor:hover {
+                transform: translateY(-5px); /* Delikatne uniesienie przy najechaniu */
+                opacity: 0.8;
+            }
 
         /* --- MOBILE MENU STYLES --- */
         .menu-toggle {
@@ -259,21 +268,21 @@
             cursor: pointer;
             z-index: 1001;
         }
-        
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background-color: var(--white);
-            border-radius: 2px;
-            transition: 0.3s;
-        }
-        
+
+            .menu-toggle span {
+                width: 25px;
+                height: 3px;
+                background-color: var(--white);
+                border-radius: 2px;
+                transition: 0.3s;
+            }
+
         /* Responsywność */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: flex;
             }
-        
+
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -287,11 +296,11 @@
                 transition: 0.4s;
                 box-shadow: -5px 0 15px rgba(0,0,0,0.2);
             }
-        
-            .nav-links.active {
-                right: 0; /* Wysunięte */
-            }
-        
+
+                .nav-links.active {
+                    right: 0; /* Wysunięte */
+                }
+
             .lang-switch {
                 border-left: none;
                 border-top: 1px solid var(--secondary-color);
@@ -299,22 +308,22 @@
                 padding-left: 0;
                 margin-left: 0;
             }
-        
+
             /* Sponsorzy na mobile */
             .sponsors-container {
                 gap: 30px;
             }
-            
+
             .sponsor img {
                 max-width: 120px; /* Mniejsze logotypy na telefonie */
             }
         }
         /* --- ukrywanie sekcji --- */
-            /* Styl dla sekcji w budowie */
+        /* Styl dla sekcji w budowie */
         .coming-soon .hide-if-empty {
             display: none !important;
         }
-        
+
         /* Domyślny komunikat (Polski) */
         .coming-soon::after {
             content: "Szczegóły już w krótce!";
@@ -329,63 +338,61 @@
             margin-top: 20px;
             font-size: 1.1em;
         }
-        
+
         /* Komunikat po przełączeniu na Angielski */
         body.lang-en .coming-soon::after {
             content: "Details coming soon!";
         }
 
-                /* --- LANGUAGE SWITCH LOGIC --- */
+        /* --- LANGUAGE SWITCH LOGIC --- */
         [lang="en"] {
             display: none !important;
         }
-        
+
         /* Jeśli body ma klasę 'lang-en', ukryj polski i pokaż angielski */
         body.lang-en [lang="pl"] {
             display: none !important;
         }
-        
+
         body.lang-en [lang="en"] {
             display: block !important;
         }
-        
+
         /* Specjalna poprawka dla elementów, które mają być 'flex' (np. siatka gości) */
-        body.lang-en .guests-grid[lang="en"], 
+        body.lang-en .guests-grid[lang="en"],
         body.lang-en .program-images[lang="en"],
         body.lang-en .sponsors-container[lang="en"] {
             display: flex !important;
         }
-
-    
-    </style>    
+    </style>
 </head>
 <body>
 
     <nav>
         <a href="#" class="nav-logo">
-            <img src="Logo_clear.png" alt="Event Logo">
+            <img src="Logo_White_Lineart.png" alt="Event Logo">
             <span class="logo-text">Zderzenia Poznawcze 2026</span>
         </a>
-        
+
         <div class="menu-toggle" onclick="toggleMenu()">
             <span></span>
             <span></span>
             <span></span>
         </div>
-        
+
         <div class="nav-links" id="navLinks">
             <a href="#about" onclick="toggleMenu()"><span lang="pl">O nas</span><span lang="en">About Us</span></a>
             <a href="#guests" onclick="toggleMenu()"><span lang="pl">Goście</span><span lang="en">Guests</span></a>
             <a href="#program" onclick="toggleMenu()"><span lang="pl">Program</span><span lang="en">Program</span></a>
             <a href="#abstracts" onclick="toggleMenu()"><span lang="pl">Call for Abstracts</span><span lang="en">Call for Abstracts</span></a>
             <a href="#contact" onclick="toggleMenu()"><span lang="pl">Kontakt</span><span lang="en">Contact</span></a>
-            
+
             <a class="lang-switch" onclick="switchLang(); event.stopPropagation();">
                 <span id="lang-label">EN</span>
             </a>
         </div>
     </nav>
-    
+
     <div class="banner">
         <img src="FB_Banner_Cover.png" alt="Event Banner" class="bg-banner">
     </div>
@@ -417,7 +424,7 @@
             <p>Want to take part in our conference actively? Go to the “call for abstracts” page!</p>
         </div>
     </section>
-    
+
     <section id="guests" class="coming-soon">
         <h2 lang="pl">Nasi Goście</h2>
         <h2 lang="en">Our Guests</h2>
@@ -492,7 +499,7 @@
             </ul>
             <p style="font-size: 1.1em; color: var(--accent-color);">Time is running out! The submission <strong>deadline is April 8!</strong></p>
         </div>
-        
+
         <div style="text-align: center; margin-top: 20px;">
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSf2GA0H85tOT1GvBAuwSTA2swUY5ar4Dh0f68ObeQBZRBi6Rw/viewform?usp=dialog" target="_blank" class="btn">
                 <span lang="pl">Formularz Zgłoszeniowy</span>
@@ -526,7 +533,7 @@
                     <img src="mlinpl-logo-white.png" alt="MlinPL">
                     <p>ML in PL</p>
                 </a>
-                
+
                 <a href="https://filozofia.uw.edu.pl" target="_blank" class="sponsor">
                     <img src="filoUW-logo.png" alt="Filozofia UW">
                     <p>Filozofia UW</p>
@@ -537,34 +544,34 @@
     </section>
 
     <div class="footnote">
-        <img src="footnote_banner.png" alt="The End" class="bg-footnote">
+        <img src="footnote_banner.png" alt="" class="bg-footnote">
     </div>
 
-<script>
-    function switchLang() {
-        
+    <script>
+        function switchLang() {
+
         const body = document.body;
         const label = document.getElementById('lang-label');
-        
+
         body.classList.toggle('lang-en');
 
-        
-        if (body.classList.contains('lang-en')) {
-            label.innerText = 'PL';
-        } else {
-            label.innerText = 'EN';
-        }
-    }
 
-    function toggleMenu() {
+        if (body.classList.contains('lang-en')) {
+        label.innerText = 'PL';
+        } else {
+        label.innerText = 'EN';
+        }
+        }
+
+        function toggleMenu() {
         const navLinks = document.getElementById('navLinks');
         const toggle = document.querySelector('.menu-toggle');
-        
+
         navLinks.classList.toggle('active');
         toggle.classList.toggle('open');
-    }
-    
-</script>
+        }
+
+    </script>
 
 </body>
 </html>
