@@ -66,10 +66,10 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
             text-decoration: none;
             min-width: 0;
-            flex-shrink: 1;
+            flex: 1;
         }
 
             .nav-logo img {
@@ -80,11 +80,12 @@
         .logo-text {
             font-family: 'Andale Mono', monospace;
             color: var(--white);
-            font-size: clamp(14px, 4vw, 18px);
+            font-size: clamp(12px, 3.5vw, 18px);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             font-weight: 600;
+            flex: 2;
         }
 
         nav a {
@@ -266,6 +267,8 @@
             gap: 5px;
             cursor: pointer;
             z-index: 1001;
+            flex: 1;
+            justify-content: flex-end;
         }
 
             .menu-toggle span {
@@ -278,22 +281,28 @@
 
         /* Responsywność */
         @media (max-width: 768px) {
+            .nav {
+                padding: 10px 20px;
+            }
+
             .menu-toggle {
                 display: flex;
             }
 
             .nav-links {
                 position: fixed;
-                top: 0;
+                top: 50px;
                 right: -100%; /* Ukryte poza ekranem */
-                height: 100vh;
+                height: calc(100vh - 60px);
                 width: 50%;
                 background-color: var(--main-color);
                 flex-direction: column;
-                justify-content: center;
+                justify-content: flex-start;
+                padding-top: 40px;
                 gap: 30px;
                 transition: 0.4s;
                 box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+                overflow-y: auto;
             }
 
                 .nav-links.active {
