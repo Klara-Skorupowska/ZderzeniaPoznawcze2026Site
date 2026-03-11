@@ -308,18 +308,26 @@
             .nav-links {
                 position: fixed;
                 top: 50px;
-                right: -100%; /* Ukryte poza ekranem */
-                height: calc(100vh - 60px);
-                width: 50%;
+                right: -100%; 
+                height: auto; /*calc(100vh - 50px); jakby jednak na całą wyskokość*/ 
+                border-radius: 0 0 0 10px;
+                width: max-content;
+                min-width: 200px;
+                padding: 20px 30px;
                 background-color: var(--main-color);
                 flex-direction: column;
                 justify-content: flex-start;
+                align-items: flex-start;
                 padding-top: 40px;
                 gap: 30px;
                 transition: 0.4s;
                 box-shadow: -5px 0 15px rgba(0,0,0,0.2);
                 overflow-y: auto;
             }
+                .nav-links a {
+                    width: 100%; 
+                    white-space: nowrap; 
+                }
 
                 .nav-links.active {
                     right: 0; /* Wysunięte */
