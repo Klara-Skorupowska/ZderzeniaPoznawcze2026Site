@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zderzenia Poznawcze 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Dodany link do Font Awesome - ikonki -->
 
     <style>
         /* --- COLOR PALETTE & VARIABLES --- */
@@ -205,7 +206,79 @@
             justify-content: center;
             gap: 20px;
         }
+        /* --- CONTACT --- */
+        #contact {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: transparent;
+        }
+                    
+        .contact-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            text-align: center;
+        }
 
+        .contact-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+            /* Ikony Font Awesome (koperta, pinezka, ludzie) */
+            .contact-item i {
+                font-size: 2.5rem;
+                color: var(--accent-color);
+                margin-bottom: 20px;
+            }
+
+            .contact-item h4 {
+                margin: 10px 0;
+                font-family: 'Andale Mono', monospace;
+                font-size: 1.1rem;
+            }
+
+        /* Styl dla kolumny Social Media */
+        .social-icons-row {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            color: #000000;
+        }
+
+            .social-icons-row a i {
+                font-size: 2rem;
+                color: #000000 !important;
+                transition: color 0.1s, transform 0.3s;
+            }
+
+                .social-icons-row a:hover {
+                    transform: translateY(-5px);
+                }
+
+                    .social-icons-row a:hover .fa-facebook {
+                        color: #1877F2 !important; /* Oficjalny niebieski Facebooka */
+                    }
+
+                    .social-icons-row a:hover .fa-instagram {
+                        color: #E4405F !important; /* Oficjalny róż/czerwony Instagrama */
+                    }
+
+                    .social-icons-row a:hover .fa-linkedin {
+                        color: #0077B5 !important; /* Oficjalny kolor LinkedIn */
+                    }
+
+        /* Responsywność - na mobile jedna pod drugą */
+        @media (max-width: 768px) {
+            .contact-grid {
+                flex-direction: column;
+                gap: 50px;
+            }
+        }
         /* --- SPONSORS --- */
         #sponsors {
             background-color: var(--secondary-color);
@@ -230,7 +303,7 @@
         .sponsors-container {
             display: flex;
             justify-content: center;
-            align-items: flex-end;
+            align-items: center;
             gap: 50px;
             flex-wrap: wrap;
         }
@@ -240,12 +313,15 @@
             text-decoration: none;
             transition: transform 0.3s ease, opacity 0.3s ease;
             display: block;
+            width: 160px;
         }
 
             .sponsor img {
-                max-width: 150px;
-                max-height: 100px;
+                width: 100%;
+                height: 100px;
+                object-fit: contain;
                 margin-bottom: 10px;
+                filter: brightness(0) invert(1);
             }
 
             .sponsor p {
@@ -308,8 +384,8 @@
             .nav-links {
                 position: fixed;
                 top: 50px;
-                right: -100%; 
-                height: auto; /*calc(100vh - 50px); jakby jednak na całą wyskokość*/ 
+                right: -100%;
+                height: auto; /*calc(100vh - 50px); jakby jednak na całą wyskokość*/
                 border-radius: 0 0 0 10px;
                 width: max-content;
                 min-width: 200px;
@@ -324,9 +400,10 @@
                 box-shadow: -5px 0 15px rgba(0,0,0,0.2);
                 overflow-y: auto;
             }
+
                 .nav-links a {
-                    width: 100%; 
-                    white-space: nowrap; 
+                    width: 100%;
+                    white-space: nowrap;
                 }
 
                 .nav-links.active {
@@ -346,9 +423,13 @@
                 gap: 30px;
             }
 
-            .sponsor img {
-                max-width: 120px; /* Mniejsze logotypy na telefonie */
+            .sponsor {
+                width: 120px; /* Nieco mniejsze logotypy na telefonie, by zmieścić dwa w rzędzie */
             }
+
+                .sponsor img {
+                    height: 80px;
+                }
 
             /* mobilni goście */
             guests-grid {
@@ -368,6 +449,17 @@
                 .program-images img {
                     max-width: 100%;
                 }
+            /* mobilny kontakt */
+            .contact-grid {
+                flex-direction: column; 
+                align-items: center; 
+                text-align: center; 
+                gap: 50px;
+            }
+
+            .contact-item {
+                width: 100%; /* Każdy element zajmuje pełną szerokość na mobile */
+            }
         }
         /* --- ukrywanie sekcji --- */
         /* Styl dla sekcji w budowie */
@@ -562,14 +654,34 @@
     <section id="contact">
         <h2 lang="pl">Kontakt</h2>
         <h2 lang="en">Contact Us</h2>
-        <p lang="pl">Masz pytania? Skontaktuj się z komitetem organizacyjnym.</p>
-        <p lang="en">If you have any questions, feel free to reach out to our organizing committee.</p>
-        <p>
-            Email: zderzenia.poznawcze@gmail.com
-            <br>
-            <span lang="pl">Lokalizacja: Wydział Filozofii UW, Krakowskie Przedmieście 3</span>
-            <span lang="en">Location: Faculty of Philosophy UW, Krakowskie Przedmieście 3</span>
-        </p>
+
+        <div class="contact-grid">
+            <div class="contact-item">
+                <i class="fa-solid fa-envelope"></i>
+                <h4>e-mail</h4>
+                <a href="mailto:zderzenia.poznawcze@gmail.com" style="color: var(--text-color); text-decoration: none;">
+                    zderzenia.poznawcze@gmail.com
+                </a>
+            </div>
+
+            <div class="contact-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <h4 lang="pl">lokalizacja</h4>
+                <h4 lang="en">location</h4>
+                <p style="margin: 0;">Wydział Filozofii UW<br>Krakowskie Przedmieście 3</p>
+            </div>
+
+            <div class="contact-item">
+                <i class="fa-solid fa-users"></i>
+                <h4 lang="pl">social media</h4>
+                <h4 lang="en">social media</h4>
+                <div class="social-icons-row">
+                    <a href="https://www.facebook.com/zderzenia.poznawcze" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/zderzenia.poznawcze2026" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://pl.linkedin.com/company/zderzenia-poznawcze" target="_blank" title="LinkedIn"> <i class="fa-brands fa-linkedin"></i> </a>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="sponsors">
@@ -578,7 +690,7 @@
                 <span lang="pl">Nasi Sponsorzy</span>
                 <span lang="en">Our Sponsors</span>
             </h2>
-            
+
             <div class="sponsors-container">
                 <a href="https://mlinpl.org" target="_blank" class="sponsor">
                     <img src="mlinpl-logo-white.png" alt="MlinPL">
@@ -586,11 +698,11 @@
                 </a>
 
                 <a href="https://filozofia.uw.edu.pl" target="_blank" class="sponsor">
-                    <img src="filoUW-logo.png" alt="Filozofia UW">
-                    <p>Filozofia UW</p>
+                    <img src="filoUW-logo.png" alt="Wydział Filozofii UW">
+                    <p>Wydział Filozofii UW</p>
                 </a>
             </div>
-        
+
         </div>
     </section>
 
