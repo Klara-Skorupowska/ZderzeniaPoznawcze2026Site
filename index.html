@@ -206,6 +206,7 @@
             justify-content: center;
             gap: 20px;
         }
+
         /* --- CONTACT --- */
         #contact {
             padding: 80px 20px;
@@ -213,7 +214,7 @@
             margin: 0 auto;
             background-color: transparent;
         }
-                    
+
         .contact-grid {
             display: flex;
             justify-content: space-between;
@@ -256,21 +257,21 @@
                 transition: color 0.1s, transform 0.3s;
             }
 
-                .social-icons-row a:hover {
-                    transform: translateY(-5px);
+            .social-icons-row a:hover {
+                transform: translateY(-5px);
+            }
+
+                .social-icons-row a:hover .fa-facebook {
+                    color: #1877F2 !important; /* Oficjalny niebieski Facebooka */
                 }
 
-                    .social-icons-row a:hover .fa-facebook {
-                        color: #1877F2 !important; /* Oficjalny niebieski Facebooka */
-                    }
+                .social-icons-row a:hover .fa-instagram {
+                    color: #E4405F !important; /* Oficjalny róż/czerwony Instagrama */
+                }
 
-                    .social-icons-row a:hover .fa-instagram {
-                        color: #E4405F !important; /* Oficjalny róż/czerwony Instagrama */
-                    }
-
-                    .social-icons-row a:hover .fa-linkedin {
-                        color: #0077B5 !important; /* Oficjalny kolor LinkedIn */
-                    }
+                .social-icons-row a:hover .fa-linkedin {
+                    color: #0077B5 !important; /* Oficjalny kolor LinkedIn */
+                }
 
         /* Responsywność - na mobile jedna pod drugą */
         @media (max-width: 768px) {
@@ -279,63 +280,104 @@
                 gap: 50px;
             }
         }
-        /* --- SPONSORS --- */
+
+        /* --- SPONSORS & PATRONS --- */
         #sponsors {
             background-color: var(--secondary-color);
-            max-width: 100% !important;
             width: 100%;
-            margin: 0;
+            max-width: none;
             padding: 60px 0;
         }
 
         .sponsors-inner {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        #sponsors h2 {
-            color: var(--white);
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .sponsors-container {
+        /* Main container for the two columns */
+        .sponsors-split-grid {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 50px;
+            justify-content: space-between;
+            gap: 60px;
             flex-wrap: wrap;
         }
 
-        .sponsor {
+        .sponsor-column {
+            flex: 1;
+            min-width: 300px; /* Forces stack on mobile */
             text-align: center;
-            text-decoration: none;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            display: block;
-            width: 160px;
         }
 
-            .sponsor img {
+        /* The Heading with the thin line */
+        .column-title {
+            color: var(--white);
+            font-family: 'Andale Mono', monospace;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+            .column-title::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 15%; /* Makes the line slightly shorter than the column */
+                right: 15%;
+                height: 1px;
+                background-color: rgba(255, 255, 255, 0.4);
+            }
+
+        /* Container for logos inside a column */
+        .logos-row {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 30px; /* Space between side-by-side items */
+            flex-wrap: wrap;
+        }
+
+        .sponsor-card {
+            text-decoration: none;
+            width: 110px; /* Smaller footprint */
+            transition: transform 0.2s;
+        }
+
+            .sponsor-card:hover {
+                transform: scale(1.05);
+            }
+
+            .sponsor-card img {
                 width: 100%;
-                height: 100px;
+                height: 80px; /* Smaller logo size */
                 object-fit: contain;
-                margin-bottom: 10px;
                 filter: brightness(0) invert(1);
+                margin-bottom: 10px;
             }
 
-            .sponsor p {
+            .sponsor-card p {
                 font-family: 'Andale Mono', monospace;
-                font-size: 14px;
-                margin: 0;
                 color: var(--white);
-                text-decoration: none;
+                font-size: 0.8rem;
+                margin: 0;
+                line-height: 1.3;
+                text-transform: uppercase;
             }
 
-            .sponsor:hover {
-                transform: translateY(-5px); /* Delikatne uniesienie przy najechaniu */
-                opacity: 0.8;
+        /* Mobile specific stacking */
+        @media (max-width: 768px) {
+            .sponsors-split-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 50px;
             }
+
+            .column-title::after {
+                left: 5%;
+                right: 5%;
+            }
+        }
 
         /* --- MOBILE MENU STYLES --- */
         .menu-toggle {
@@ -424,11 +466,11 @@
             }
 
             .sponsor {
-                width: 120px; /* Nieco mniejsze logotypy na telefonie, by zmieścić dwa w rzędzie */
+                width: 100px; /* Nieco mniejsze logotypy na telefonie, by zmieścić dwa w rzędzie */
             }
 
                 .sponsor img {
-                    height: 80px;
+                    height: 50px;
                 }
 
             /* mobilni goście */
@@ -451,9 +493,9 @@
                 }
             /* mobilny kontakt */
             .contact-grid {
-                flex-direction: column; 
-                align-items: center; 
-                text-align: center; 
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
                 gap: 50px;
             }
 
@@ -469,7 +511,7 @@
 
         /* Domyślny komunikat (Polski) */
         .coming-soon::after {
-            content: "Szczegóły już w krótce!";
+            content: "Szczegóły już wkrótce!";
             display: block;
             padding: 30px;
             background: rgba(255, 255, 255, 0.6);
@@ -506,6 +548,14 @@
         body.lang-en .program-images[lang="en"],
         body.lang-en .sponsors-container[lang="en"] {
             display: flex !important;
+        }
+
+        body.lang-en .sponsors-col h3 [lang="pl"] {
+            display: none !important;
+        }
+
+        body.lang-en .sponsors-col h3 [lang="en"] {
+            display: block !important;
         }
     </style>
 </head>
@@ -686,23 +736,43 @@
 
     <section id="sponsors">
         <div class="sponsors-inner">
-            <h2>
-                <span lang="pl">Nasi Sponsorzy</span>
-                <span lang="en">Our Sponsors</span>
-            </h2>
+            <div class="sponsors-split-grid">
 
-            <div class="sponsors-container">
-                <a href="https://mlinpl.org" target="_blank" class="sponsor">
-                    <img src="mlinpl-logo-white.png" alt="MlinPL">
-                    <p>ML in PL</p>
-                </a>
+                <div class="sponsor-column">
+                    <h3 class="column-title">
+                        <span lang="pl">Sponsorzy</span>
+                        <span lang="en">Sponsors</span>
+                    </h3>
 
-                <a href="https://filozofia.uw.edu.pl" target="_blank" class="sponsor">
-                    <img src="filoUW-logo.png" alt="Wydział Filozofii UW">
-                    <p>Wydział Filozofii UW</p>
-                </a>
+                    <div class="logos-row">
+                        <a href="https://mlinpl.org" target="_blank" class="sponsor-card">
+                            <img src="mlinpl-logo-white.png" alt="MlinPL">
+                            <p>ML in PL</p>
+                        </a>
+
+                        <a href="https://filozofia.uw.edu.pl" target="_blank" class="sponsor-card">
+                            <img src="filoUW-logo.png" alt="Wydział Filozofii UW">
+                            <p>Wydział Filozofii UW</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sponsor-column">
+                    <h3 class="column-title">
+                        <span lang="pl">Patroni</span>
+                        <span lang="en">Patrons</span>
+                    </h3>
+                    <!--
+    <div class="logos-row">
+        <a href="#" class="sponsor-card">
+            <div style="height: 60px; display: flex; align-items: center; justify-content: center; color: white; opacity: 0.6; font-size: 10px;">&lt;logo_patrona&gt;</div>
+            <p>jakiś tam patron</p>
+        </a>
+    </div>
+        -->
+                </div>
+
             </div>
-
         </div>
     </section>
 
