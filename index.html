@@ -1,3 +1,4 @@
+/* --- witaj, podróżniku! --- */
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -22,6 +23,7 @@
         /* --- GLOBAL STYLES --- */
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 40px;
         }
 
         body {
@@ -114,7 +116,7 @@
 
         /* --- BANNER --- */
         .banner {
-            margin-top: 50px;
+            margin-top: 30px;
             position: relative;
             text-align: center;
             background-color: var(--bg-color);
@@ -163,12 +165,48 @@
             }
 
         /* --- GUESTS --- */
+        .event-header-row {
+            display: flex;
+            gap: 15px; /* Odstęp między kafelkami nagłówka */
+            margin: 40px 0 20px 0;
+            width: 100%;
+        }
+
+        .event-title-box {
+            flex: 1; /* Zajmuje główną, pozostałą przestrzeń */
+            background-color: var(--white);
+            padding: 15px 20px;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        .event-tag-box {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 15px 30px;
+            text-align: center;
+            font-weight: 600;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            min-width: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
         .guests-grid {
             display: flex;
             justify-content: space-between;
             gap: 20px;
             text-align: center;
         }
+
 
         .guest-card {
             background: var(--white);
@@ -177,6 +215,11 @@
             flex: 1;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
+            .guest-card.centered-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            } 
 
             .guest-card img {
                 width: 150px;
@@ -186,6 +229,7 @@
                 margin-bottom: 15px;
                 border: 4px solid var(--secondary-color);
             }
+
 
         /* --- PROGRAM --- */
         .program-images {
@@ -474,14 +518,20 @@
                 }
 
             /* mobilni goście */
-            guests-grid {
+            .event-header-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .guests-grid {
                 flex-direction: column;
                 align-items: center;
             }
 
             .guest-card {
                 width: 100%;
-                max-width: 300px;
+                max-width: 450px;
+                box-sizing: border-box;
             }
             /* mobilny program */
             .program-images {
@@ -580,7 +630,7 @@
             <a href="#program" onclick="toggleMenu()"><span lang="pl">Program</span><span lang="en">Schedule</span></a>
             <a href="#contact" onclick="toggleMenu()"><span lang="pl">Kontakt</span><span lang="en">Contact</span></a>
 
-            <a class="lang-switch" onclick="switchLang(); event.stopPropagation();">
+            <a class="lang-switch" onclick="switchLang(); toggleMenu(); event.stopPropagation();">
                 <span id="lang-label">EN</span>
             </a>
         </div>
@@ -601,7 +651,6 @@
             <h3>Jak trafić na konferencję?</h3>
             <p>Wstęp jest wolny, a konferencja odbywa się na Krakowskim Przedmieściu 3, w samym sercu Warszawy, między kawiarniami a Starym Miastem. Można wpaść na godzinę albo zostać na cały dzień. Można słuchać w skupieniu albo zadawać trudne pytania. Jedyne czego oczekujemy to ciekawość i otwartość na najnowsze, studenckie badania kognitywistyczne.</p>
             <p><strong>Nie możemy się doczekać naszego spotkania 16-17 maja 2026 na Wydziale Filozofii UW!</strong></p>
-            <p>Chciałbyś wziąć aktywny udział w konferencji? Nabór abstraktów wystąpień i posterów trwa! Przejdź do zakładki: Call for abstracts! </p>
         </div>
 
         <div lang="en">
@@ -614,71 +663,104 @@
             <h3>So how can I get there?</h3>
             <p>Admission is free, and the conference takes place at Krakowskie Przedmieście 3 - in the very heart of Warsaw, right between cafés and the Old Town. You can drop in for an hour or stay for the whole day. You can listen attentively or ask tough questions. Curiosity and open-mindedness about recent academic cognitive research are the only things you need.</p>
             <p><strong>Can’t wait to see you on the 16th and 17th May 2026 at the Faculty of Philosophy of the Warsaw University!</strong></p>
-            <p>Want to take part in our conference actively? Go to the “call for abstracts” page!</p>
         </div>
     </section>
 
     <section id="abstracts">
         <div lang="pl">
             <h2>Call for Abstracts</h2>
-            <p>Jeśli zastanawialiście się jak zgłosić swoje wystąpienie lub plakat na Zderzenia Poznawcze, spieszymy z pomocą! <strong>Nabór abstraktów jest oficjalnie rozpoczęty!</strong></p>
-            <p>Zgłoszeń można dokonywać poprzez poniższy formularz. Abstrakty zostaną ocenione przez zespół naszych recenzentów.</p>
-            <p>Sprawdzamy:</p>
-            <ul>
-                <li>zgodność z interdyscyplinarnym charakterem konferencji</li>
-                <li>merytoryczną treść wystąpienia</li>
-                <li>zwięzłą i wyczerpującą formę abstraktu</li>
-            </ul>
-            <p style="font-size: 1.1em; color: var(--accent-color);">Czas ucieka! Na zgłoszenia czekamy tylko do <strong>8 kwietnia!</strong></p>
+            <p>Zakończyliśmy nabór abstraktów. W tym roku wpłynęła do nas rekordowa liczba zgłoszeń na wystąpienia i plakaty na naszej konferencji! Bardzo się z tego powodu cieszymy i chcemy gorąco podziękować za tak ogromne zainteresowanie!</p>
+            <p>Do zobaczenia na Konferencji!</p>
         </div>
 
         <div lang="en">
             <h2>Call for Abstracts</h2>
-            <p>If you have been wondering how to submit your presentation or poster for our conference, we are here to help! <strong>We have just opened the call for abstracts!</strong></p>
-            <p>Submissions can be made via a form below. The abstracts will be reviewed by our team of reviewers.</p>
-            <p>We evaluate:</p>
-            <ul>
-                <li>Alignment with the interdisciplinary nature of the conference</li>
-                <li>The substantive content of the presentation</li>
-                <li>A concise and comprehensive abstract format</li>
-            </ul>
-            <p style="font-size: 1.1em; color: var(--accent-color);">Time is running out! The submission <strong>deadline is April 8!</strong></p>
+            <p>The abstract submission period has closed. This year, we received a record number of submissions for presentations and posters at our conference! We are thrilled and would like to sincerely thank you for your overwhelming interest!</p>
+            <p>See you at the Conference!</p>
         </div>
-
-        <div style="text-align: center; margin-top: 20px;">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScPP-QAQm5aEKHbyeCb8Vpyju1Pu3WmYs0Z8yBsgo2jaAqgbQ/viewform?usp=dialog" target="_blank" class="btn">
-                <span lang="pl">Formularz Zgłoszeniowy</span>
-                <span lang="en">Application Form</span>
-            </a>
-        </div>
+        <!--
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScPP-QAQm5aEKHbyeCb8Vpyju1Pu3WmYs0Z8yBsgo2jaAqgbQ/viewform?usp=dialog" target="_blank" class="btn">
+            <span lang="pl">Formularz Zgłoszeniowy</span>
+            <span lang="en">Application Form</span>
+        </a>
+    </div>
+        -->
     </section>
 
-    <section id="guests" class="coming-soon">
+    <section id="guests">
         <h2 lang="pl">Nasi Goście</h2>
         <h2 lang="en">Our Guests</h2>
         <div class="hide-if-empty">
+            <div class="event-header-row">
+                <div class="event-title-box">
+                    <h3 lang="pl">Umysł w sieci neuronowej. <br /> Jak algorytmy SI wpływają na nasze procesy poznawcze?</h3>
+                    <h3 lang="en">The Mind in the Neural Network: <br /> How AI Algorithms Affect Our Cognitive Processes?</h3>
+                </div>
+                <div class="event-tag-box">
+                    <span lang="pl"> panel </span>
+                    <span lang="en"> panel </span>
+                </div>
+                <div class="event-tag-box">
+                    <span lang="pl">po polsku</span>
+                    <span lang="en">In Polish</span>
+                </div>
+            </div>
             <div class="guests-grid">
                 <div class="guest-card">
-                    <img src="guest1.jpg" alt="Guest 1">
-                    <h3>Jane Doe</h3>
-                    <p lang="pl">Dr Doe jest czołową ekspertką w swojej dziedzinie z ponad 20-letnim doświadczeniem badawczym.</p>
-                    <p lang="en">Dr. Doe is a leading expert in her field with over 20 years of research and keynote experience.</p>
+                    <img src="foto_puscian.png" alt="Dr Alicja Puścian">
+                    <h3>Dr Alicja Puścian</h3>
+                    <p lang="pl">Neurobiolożka koncentrująca się na złożonych relacjach między strukturą mózgu a zachowaniem. W swojej pracy naukowej łączy perspektywę psychologii, biologii oraz zaawansowanej analizy behawioralnej, by zgłębiać mechanizmy odpowiedzialne za emocje, motywację i interakcje społeczne. Jako ekspertka w dziedzinie neuroplastyczności, aktywnie analizuje wpływ nowych technologii na ludzki umysł. W debacie publicznej jest ważnym głosem w temacie oddziaływania sztucznej inteligencji na kondycję poznawczą człowieka. </p>
+                    <p lang="en">Neuroscientist focusing on the complex relationships between brain structure and behavior. In her research, she integrates perspectives from psychology, biology, and advanced behavioral analysis to explore the mechanisms underlying emotions, motivation, and social interactions. As an expert in neuroplasticity, she actively analyzes the impact of new technologies on the human mind. In public discourse, she is a prominent voice on how artificial intelligence affects human cognitive health.</p>
                 </div>
                 <div class="guest-card">
-                    <img src="guest2.jpg" alt="Guest 2">
-                    <h3>John Smith</h3>
-                    <p lang="pl">Innowator i autor, John zrewolucjonizował nowoczesne strategie pracy.</p>
-                    <p lang="en">Innovator and author, John has revolutionized modern workflows and strategies.</p>
+                    <img src="foto_bielecki.jpg" alt="Dr Maksymilian Bielecki">
+                    <h3>Dr Maksymilian Bielecki </h3>
+                    <p lang="pl">Psycholog oraz neurokognitywista. W swojej pracy naukowej koncentruje się na problematyce metodologii, mechanizmach uwagi, percepcji oraz przetwarzaniu informacji w interakcji człowiek-technologia. Jako ekspert w dziedzinie psychologii, analizuje wpływ narzędzi opartych na sztucznej inteligencji na naszą zdolność do koncentracji i krytycznej oceny danych. W debacie o AI kładzie nacisk na zagadnienia ergonomii poznawczej oraz ryzyka związane z nadmiernym poleganiem na algorytmach w procesach myślowych.</p>
+                    <p lang="en">Psychologist and neurocognitive scientist. In his academic work, he focuses on methodology, attentional mechanisms, perception, and information processing within human-technology interaction. As an expert in psychology, he analyzes the impact of AI-based tools on our capacity for concentration and critical data evaluation. In the AI debate, he emphasizes cognitive ergonomics and the risks associated with over-reliance on algorithms in thinking processes.</p>
                 </div>
                 <div class="guest-card">
-                    <img src="guest3.jpg" alt="Guest 3">
-                    <h3>Alice Lee</h3>
-                    <p lang="pl">Nagradzana projektantka i przedsiębiorczyni, Alice wnosi kreatywną perspektywę do panelu.</p>
-                    <p lang="en">Award-winning designer and entrepreneur, Alice brings a creative perspective to our panel.</p>
+                    <img src="foto_mozaryn.png" alt="Dr inż. Jakub Możaryn">
+                    <h3>Dr inż. Jakub Możaryn</h3>
+                    <p lang="pl">Ekspert w dziedzinie automatyki, robotyki oraz systemów sterowania. W pracy naukowej i dydaktycznej koncentruje się na praktycznych aspektach implementacji algorytmów sztucznej inteligencji w systemach autonomicznych i robotycznych. Jego doświadczenie obejmuje zarówno projektowanie zaawansowanych układów mechatronicznych, jak i analizę interakcji człowiek-maszyna z perspektywy inżynieryjnej. Jako popularyzator nauki, w debacie o AI rzuca światło na techniczne ograniczenia i możliwości współczesnych modeli, wskazując na różnice między biologicznym przetwarzaniem informacji a uczeniem maszynowym.</p>
+                    <p lang="en">Expert in automation, robotics, and control systems. In his research and teaching, he focuses on the practical aspects of implementing artificial intelligence algorithms in autonomous and robotic systems. His experience encompasses both the design of advanced mechatronic systems and the engineering analysis of human-machine interaction. As a science communicator, he sheds light on the technical limitations and possibilities of modern AI models, highlighting the differences between biological information processing and machine learning.</p>
+                </div>
+            </div>
+
+            <div class="event-header-row">
+                <div class="event-title-box">
+                    <h3 lang="pl">Depresja pod lupą neuronauki: <br /> Neurobiologiczne podłoża zaburzeń depresyjnych.</h3>
+                    <h3 lang="en">Depression under the microscope of neuroscience: <br /> Neurobiological substrates of depressive disorders.</h3>
+                </div>
+                <div class="event-tag-box">
+                    <span lang="pl"> wykład </span>
+                    <span lang="en"> lecture </span>
+                </div>
+                <div class="event-tag-box">
+                    <span lang="pl">po polsku</span>
+                    <span lang="en">In Polish</span>
+                </div>
+            </div>
+            <div class=guests-grid>
+                <div class="guest-card">
+                    <img src="foto_kolodziej.png" alt="Dr Aleksandra Kołodziej">
+                    <h3>Dr Aleksandra Kołodziej</h3>
+                    <p lang="pl">Psycholożka i neurokognitywistka, specjalistka w zakresie wykorzystania elektroencefalografii (EEG) do badania neurobiologicznych mechanizmów zaburzeń nastroju. Jej praca naukowa koncentruje się na analizie oscylacji neuronalnych (fal mózgowych) oraz ich związku ze zmianami w funkcjonowaniu poznawczym osób zmagających się z depresją. Doświadczenie zdobywała w prestiżowym Donders Centre for Cognitive Neuroimaging na Uniwersytecie Radboud w Holandii pod kierunkiem prof. Michaela X Cohena. Jest laureatką prestiżowych grantów badawczych, w tym „Diamentowego Grantu” (MNiSW) oraz stypendium „Etiuda” (NCN). W jej badaniach na szczególną uwagę zasługują badania dotyczące asymetrii fal alfa znad okolic czołowych jako kluczowemu czynnikowi wyjaśniającemu zmiany w procesach myślowych i emocjonalnych.</p>
+                    <p lang="en">Psychologist and neurocognitive scientist, specializing in the use of electroencephalography (EEG) to study the neurobiological mechanisms of mood disorders. Her research focuses on the analysis of neuronal oscillations (brain waves) and their relationship to changes in cognitive functioning in individuals with depression. She gained experience at the prestigious Donders Centre for Cognitive Neuroimaging at Radboud University in the Netherlands under the supervision of Prof. Michael X Cohen. She is a recipient of prestigious research grants, including the "Diamond Grant" (MNiSW) and the "Etiuda" scholarship (NCN). Her research particularly highlights the role of frontal alpha wave asymmetry as a key factor explaining changes in cognitive and emotional processes.</p>
+                </div>
+                <div class="guest-card centered-content">
+                    <span lang="pl">
+                        <h3>Abstrakt wystąpienia</h3>
+                        <p>Depresja jest jednym z najczęstszych zaburzeń psychicznych o złożonych przyczynach, w których ważną rolę odgrywają procesy neurobiologiczne. Podczas wystąpienia zostanie przedstawiona aktualna wiedza na temat biologicznych podstaw depresji- min. zaburzeń w działaniu neuroprzekaźników, zmian w plastyczności mózgu, funkcjonowaniu sieci neuronalnych oraz czy badania nad biomarkerami depresji mogą wspierać trafniejszą diagnozę. Celem prezentacji jest pokazanie, w jaki sposób współczesna neurobiologia pomaga lepiej zrozumieć mechanizmy depresji i rozwijać nowe strategie terapeutyczne, a także, które z wcześniejszych teorii wyjaśniających mechanizmy depresji nie znajdują dziś potwierdzenia w wynikach badań.</p>
+                    </span>
+                    <span lang="en">
+                        <h3>Abstract of the speech</h3>
+                        <p>Depression is one of the most common mental disorders with complex causes, in which neurobiological processes play a significant role. This presentation will present current knowledge about the biological basis of depression, including disturbances in neurotransmitter function, changes in brain plasticity, and the functioning of neural networks, and whether research on depression biomarkers can support a more accurate diagnosis. The aim of the presentation is to demonstrate how modern neurobiology is helping to better understand the mechanisms of depression and develop new therapeutic strategies, as well as which earlier theories explaining the mechanisms of depression are currently unsupported by research findings.</p>
+                    </span>
                 </div>
             </div>
         </div>
-    </section>
+</section>
 
     <section id="program" class="coming-soon">
         <h2 lang="pl">Program Wydarzenia</h2>
@@ -689,13 +771,13 @@
                 <img src="program-page2.png" alt="Program Page 2">
             </div>
             <div class="program-buttons">
-                <a href="Event_Program.pdf" download class="btn">
-                    <span lang="pl">Pobierz Program (PDF)</span>
-                    <span lang="en">Download Program (PDF)</span>
+                <a href="program.pdf" download class="btn">
+                    <span lang="pl">Program (PDF)</span>
+                    <span lang="en">Schedule (PDF)</span>
                 </a>
-                <a href="Book_of_Abstracts.pdf" download class="btn">
+                <a href="abstrakty.pdf" download class="btn">
                     <span lang="pl">Księga Abstraktów (PDF)</span>
-                    <span lang="en">Download Abstracts (PDF)</span>
+                    <span lang="en">Book of Abstracts (PDF)</span>
                 </a>
             </div>
         </div>
@@ -740,37 +822,32 @@
 
                 <div class="sponsor-column">
                     <h3 class="column-title">
-                        <span lang="pl">Sponsorzy</span>
-                        <span lang="en">Sponsors</span>
+                        <span lang="pl">Wspierają nas:</span>
+                        <span lang="en">Our supporters:</span>
                     </h3>
 
                     <div class="logos-row">
-                        <!--
-    <a href="https://mlinpl.org" target="_blank" class="sponsor-card">
-        <img src="mlinpl-logo-white.png" alt="MlinPL">
-        <p>ML in PL</p>
-    </a>
-        -->
+                        <a href="https://mlinpl.org" target="_blank" class="sponsor-card">
+                            <img src="mlinpl-logo-white.png" alt="MlinPL">
+                            <p>ML in PL</p>
+                        </a>
+                        <a href="https://www.realeye.io/pl" target="_blank" class="sponsor-card">
+                            <img src="realEye-white.png" alt="RealEye">
+                            <p>RealEye</p>
+                        </a>
                         <a href="https://filozofia.uw.edu.pl" target="_blank" class="sponsor-card">
                             <img src="filoUW-logo.png" alt="Wydział Filozofii UW">
                             <p>Wydział Filozofii UW</p>
                         </a>
+                        <a href="https://www.instagram.com/skn.kognitywistyki/" target="_blank" class="sponsor-card">
+                            <img src="skn_kogni-white.png" alt="SKN Kognitywistyki">
+                            <p>Studenckie Koło Naukowe Kognitywistyki</p>
+                        </a>
+                        <a href="https://www.facebook.com/people/Studenckie-Ko%C5%82o-Naukowe-Neuropsychologii-i-Psychofizjologii-UW/61573943383420/#" target="_blank" class="sponsor-card">
+                            <img src="skn_neuropsych-white.png" alt="SKN Neuropsychologii i Psychofizjologii">
+                            <p>Studenckie Koło Naukowe Neuropsychologii i Psychofizjologii</p>
+                        </a>
                     </div>
-                </div>
-
-                <div class="sponsor-column">
-                    <h3 class="column-title">
-                        <span lang="pl">Patroni</span>
-                        <span lang="en">Patrons</span>
-                    </h3>
-                    <!--
-    <div class="logos-row">
-        <a href="#" class="sponsor-card">
-            <div style="height: 60px; display: flex; align-items: center; justify-content: center; color: white; opacity: 0.6; font-size: 10px;">&lt;logo_patrona&gt;</div>
-            <p>jakiś tam patron</p>
-        </a>
-    </div>
-        -->
                 </div>
 
             </div>
