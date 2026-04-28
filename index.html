@@ -215,11 +215,12 @@
             flex: 1;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
+
             .guest-card.centered-content {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-            } 
+            }
 
             .guest-card img {
                 width: 150px;
@@ -384,7 +385,7 @@
 
         .sponsor-card {
             text-decoration: none;
-            width: 110px; /* Smaller footprint */
+            width: 150px; /* Smaller footprint */
             transition: transform 0.2s;
         }
 
@@ -394,7 +395,8 @@
 
             .sponsor-card img {
                 width: 100%;
-                height: 80px; /* Smaller logo size */
+                height: 100px;
+                max-width: 100px;
                 object-fit: contain;
                 filter: brightness(0) invert(1);
                 margin-bottom: 10px;
