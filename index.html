@@ -241,8 +241,9 @@
         }
 
             .program-images img {
-                max-width: 48%;
+                max-width: 100%;
                 box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                border-radius: 8px;
             }
 
         .program-buttons {
@@ -250,6 +251,24 @@
             display: flex;
             justify-content: center;
             gap: 20px;
+        }
+
+        /* interakcja na desktop */
+        .program-images img {
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+            .program-images img:hover {
+                transform: scale(1.05);
+            }
+
+        /* wersja mobilna */
+        @media (max-width: 768px) {
+            .program-images img {
+                cursor: default;
+                pointer-events: none; /* Blokuje otwieranie powiększenia na telefonach */
+            }
         }
 
         /* --- CONTACT --- */
@@ -424,6 +443,53 @@
                 right: 5%;
             }
         }
+
+        /* --- FULLSCREEN PROGRAM VIEW --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--main-color); /* Pełne tło w Twoim kolorze */
+            z-index: 9999;
+            overflow-y: auto; /* Pozwala skrolować obraz, gdy jest za długi */
+            cursor: default;
+        }
+
+        .modal-content {
+            width: 100%; /* Zajmuje całą szerokość strony */
+            margin: 0;
+            padding: 0;
+        }
+
+            .modal-content img {
+                width: 100%; /* Obraz rozciąga się na całą szerokość */
+                height: auto;
+                display: block;
+            }
+
+        .close-modal {
+            position: fixed; /* Przycisk (x) jest przypięty do ekranu, nie ucieka przy skrolowaniu */
+            top: 20px;
+            right: 30px;
+            font-size: 50px;
+            color: var(--white);
+            background: rgba(0, 0, 0, 0.5); /* Lekkie tło pod (x) dla widoczności */
+            width: 60px;
+            height: 60px;
+            line-height: 55px;
+            text-align: center;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10000;
+            transition: background 0.3s;
+        }
+
+            .close-modal:hover {
+                background: var(--accent-color);
+            }
 
         /* --- MOBILE MENU STYLES --- */
         .menu-toggle {
@@ -681,13 +747,13 @@
             <p>See you at the Conference!</p>
         </div>
         <!--
-    <div style="text-align: center; margin-top: 20px;">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScPP-QAQm5aEKHbyeCb8Vpyju1Pu3WmYs0Z8yBsgo2jaAqgbQ/viewform?usp=dialog" target="_blank" class="btn">
-            <span lang="pl">Formularz Zgłoszeniowy</span>
-            <span lang="en">Application Form</span>
-        </a>
-    </div>
-        -->
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScPP-QAQm5aEKHbyeCb8Vpyju1Pu3WmYs0Z8yBsgo2jaAqgbQ/viewform?usp=dialog" target="_blank" class="btn">
+                <span lang="pl">Formularz Zgłoszeniowy</span>
+                <span lang="en">Application Form</span>
+            </a>
+        </div>
+            -->
     </section>
 
     <section id="guests">
@@ -762,25 +828,37 @@
                 </div>
             </div>
         </div>
-</section>
+    </section>
 
-    <section id="program" class="coming-soon">
+    <section id="program">
         <h2 lang="pl">Program Wydarzenia</h2>
         <h2 lang="en">Schedule</h2>
         <div class="hide-if-empty">
             <div class="program-images">
-                <img src="program-page1.png" alt="Program Page 1">
-                <img src="program-page2.png" alt="Program Page 2">
+                <!-- Dzień 1 -->
+                <picture>
+                    <source srcset="program_sobota.png" media="(max-width: 768px)">
+                    <img src="program_sobota.png" alt="Program Sobota" onclick="openProgram(this.src)">
+                </picture>
+
+                <!-- Dzień 2 -->
+                <picture>
+                    <source srcset="program_niedziela_mobile.png" media="(max-width: 768px)">
+                    <img src="program_niedziela.png" alt="Program Niedziela" onclick="openProgram(this.src)">
+                </picture>
             </div>
+
             <div class="program-buttons">
                 <a href="program.pdf" download class="btn">
                     <span lang="pl">Program (PDF)</span>
                     <span lang="en">Schedule (PDF)</span>
                 </a>
-                <a href="abstrakty.pdf" download class="btn">
-                    <span lang="pl">Księga Abstraktów (PDF)</span>
-                    <span lang="en">Book of Abstracts (PDF)</span>
-                </a>
+                <!--
+    <a href="abstrakty.pdf" download class="btn">
+        <span lang="pl">Księga Abstraktów (PDF)</span>
+        <span lang="en">Book of Abstracts (PDF)</span>
+    </a>
+        -->
             </div>
         </div>
     </section>
@@ -884,7 +962,44 @@
         toggle.classList.toggle('open');
         }
 
+        function openProgram(src) {
+            // Sprawdzamy czy nie jest to mobile
+            if (window.innerWidth > 768) {
+                const overlay = document.getElementById('programOverlay');
+                const fullImg = document.getElementById('fullProgramImg');
+        
+                fullImg.src = src;
+                overlay.style.display = 'block';
+        
+                // Blokujemy skrolowanie strony głównej pod spodem
+                document.body.style.overflow = 'hidden';
+        
+                // Resetujemy skok przewijania warstwy na górę
+                overlay.scrollTop = 0;
+            }
+        }
+
+        function closeProgram() {
+            const overlay = document.getElementById('programOverlay');
+            overlay.style.display = 'none';
+    
+            // Przywracamy skrolowanie strony głównej
+            document.body.style.overflow = 'auto';
+        }
+
+        // Obsługa klawisza ESC dla wygody
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") closeProgram();
+        });
+
     </script>
+
+    <div class="modal-overlay" id="programOverlay">
+        <span class="close-modal" onclick="closeProgram()">&times;</span>
+        <div class="modal-content">
+            <img src="" id="fullProgramImg">
+        </div>
+    </div>
 
 </body>
 </html>
