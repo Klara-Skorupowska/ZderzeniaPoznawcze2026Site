@@ -1,0 +1,35 @@
+/* enqueue these as a separate stylesheet so they can be filtered */
+
+.fontsize, .fontsize h1, .fontsize h2, .fontsize h3, .fontsize h4, .fontsize h5, .fontsize h6, .fontsize p, .fontsize li:not(.a11y-toolbar-list-item), .fontsize label, .fontsize input, .fontsize select, .fontsize textarea, .fontsize legend, .fontsize code, .fontsize pre, .fontsize dd, .fontsize dt, .fontsize blockquote {
+    font-size: 150% !important;
+    line-height: 1.4;
+}
+
+.fontsize li li {
+    font-size: 110% !important;
+}
+
+.fontsize li li li {
+    font-size: 100% !important;
+}
+/*
+     FILE ARCHIVED ON 18:14:28 May 26, 2025 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 21:36:27 May 05, 2026.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 0.59
+  exclusion.robots: 0.072
+  exclusion.robots.policy: 0.061
+  esindex: 0.008
+  cdx.remote: 6.811
+  LoadShardBlock: 113.037 (3)
+  PetaboxLoader3.datanode: 122.74 (5)
+  PetaboxLoader3.resolve: 94.166 (2)
+  load_resource: 113.181
+  loaddict: 39.155
+*/
