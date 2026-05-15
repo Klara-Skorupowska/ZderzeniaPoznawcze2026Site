@@ -538,7 +538,7 @@
                 position: fixed;
                 top: 50px;
                 right: -100%;
-                height: auto; /*calc(100vh - 50px); jakby jednak na całą wyskokość*/
+                height: auto;
                 border-radius: 0 0 0 10px;
                 width: max-content;
                 min-width: 200px;
@@ -695,6 +695,7 @@
             <a href="#abstracts" onclick="toggleMenu()"><span lang="pl">Call for Abstracts</span><span lang="en">Call for Abstracts</span></a>
             <a href="#guests" onclick="toggleMenu()"><span lang="pl">Goście</span><span lang="en">Guests</span></a>
             <a href="#program" onclick="toggleMenu()"><span lang="pl">Program</span><span lang="en">Schedule</span></a>
+            <a href="#abstract-book" onclick="scrollToButton(event)"><span lang="pl">Księga Abstraktów</span><span lang="en">Book of Abstracts</span></a>
             <a href="#contact" onclick="toggleMenu()"><span lang="pl">Kontakt</span><span lang="en">Contact</span></a>
 
             <a class="lang-switch" onclick="switchLang(); toggleMenu(); event.stopPropagation();">
@@ -846,19 +847,20 @@
                     <img src="program_niedziela.png" alt="Program Niedziela" onclick="openProgram(this.src)">
                 </picture>
             </div>
-
-            <div class="program-buttons">
-                <a href="program.pdf" target="_blank" class="btn">
-                    <span lang="pl">Program (PDF)</span>
-                    <span lang="en">Schedule (PDF)</span>
-                </a>
-            <a href="abstrakty.pdf" target="_blank" class="btn">
-                <span lang="pl">Księga Abstraktów (PDF)</span>
-                <span lang="en">Book of Abstracts (PDF)</span>
-            </a>
+            <div class="program-buttons" id="abstract-book">
+                <div class="program-buttons">
+                    <a href="program.pdf" target="_blank" class="btn">
+                        <span lang="pl">Program (PDF)</span>
+                        <span lang="en">Schedule (PDF)</span>
+                    </a>
+                    <a href="abstrakty.pdf" target="_blank" class="btn">
+                        <span lang="pl">Księga Abstraktów (PDF)</span>
+                        <span lang="en">Book of Abstracts (PDF)</span>
+                    </a>
+                </div>
             </div>
         </div>
-    </section>
+</section>
 
     <section id="contact">
         <h2 lang="pl">Kontakt</h2>
@@ -957,6 +959,16 @@
 
         navLinks.classList.toggle('active');
         toggle.classList.toggle('open');
+        }
+
+        function scrollToButton(event) {
+            event.preventDefault(); // Stop instant anchor jump
+            toggleMenu(); // Close mobile drawer if open
+            
+            const btn = document.getElementById('abstract-book');
+            if (btn) {
+                btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
         }
 
         function openProgram(src) {
